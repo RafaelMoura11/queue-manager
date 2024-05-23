@@ -4,12 +4,11 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "tsc": "npx tsc",
     "db:init": "npx sequelize-cli db:create && npx sequelize-cli db:migrate",
     "db:reset": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
     "init": "node ./build/server.js",
-    "start": "npm run tsc && npm run db:init",
+    "start": "npm run tsc && npm run db:init && npm run init",
     "dev": "ts-node-dev ./src/server.ts"
   },
   "dependencies": {
