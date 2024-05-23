@@ -1,35 +1,45 @@
 import { Table, Column, Model, DataType, BelongsTo, ForeignKey } from 'sequelize-typescript';
+import { Customer } from './Customer';
 import { Employee } from './Employee';
 
 @Table({
   timestamps: false,
 })
-export class User extends Model<User> {
+export class Reservation extends Model<Reservation> {
   @Column({
     type: DataType.INTEGER,
     allowNull: false,
     autoIncrement: true,
     primaryKey: true,
   })
-  id_user!: number;
+  id_reservation!: number;
+
+  @Column({
+    type: DataType.INTEGER,
+    allowNull: false,
+  })
+  people_qty!: number;
+
+  @Column({
+    type: DataType.DATE,
+    allowNull: false,
+  })
+  date!: Date;
 
   @Column({
     type: DataType.STRING,
     allowNull: false,
   })
-  email!: string;
+  cpf_customer!: string;
 
   @Column({
     type: DataType.STRING,
     allowNull: false,
   })
-  password!: string;
+  cpf_employee!: string;
 
-  @Column({
-    type: DataType.STRING,
-    allowNull: false,
-  })
-  employee_cpf!: string;
+  @BelongsTo(() => Customer)
+  customer!: Customer;
 
   @BelongsTo(() => Employee)
   employee!: Employee;

@@ -4,32 +4,20 @@ import { Employee } from './Employee';
 @Table({
   timestamps: false,
 })
-export class User extends Model<User> {
+export class EmployeePhone extends Model<EmployeePhone> {
   @Column({
-    type: DataType.INTEGER,
+    type: DataType.STRING,
     allowNull: false,
-    autoIncrement: true,
     primaryKey: true,
   })
-  id_user!: number;
-
-  @Column({
-    type: DataType.STRING,
-    allowNull: false,
-  })
-  email!: string;
-
-  @Column({
-    type: DataType.STRING,
-    allowNull: false,
-  })
-  password!: string;
-
-  @Column({
-    type: DataType.STRING,
-    allowNull: false,
-  })
   employee_cpf!: string;
+
+  @Column({
+    type: DataType.STRING,
+    allowNull: false,
+    unique: true,
+  })
+  number!: string;
 
   @BelongsTo(() => Employee)
   employee!: Employee;
