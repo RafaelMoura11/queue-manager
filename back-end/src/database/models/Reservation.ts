@@ -1,46 +1,60 @@
-import { Table, Column, Model, DataType, BelongsTo, ForeignKey } from 'sequelize-typescript';
-import { Customer } from './Customer';
+import { Model, DataTypes } from 'sequelize';
+import sequelize from './';
+import Customer from './Customer';
 import { Employee } from './Employee';
 
-@Table({
-  timestamps: false,
-})
-export class Reservation extends Model<Reservation> {
-  @Column({
-    type: DataType.INTEGER,
+class Reservation extends Model {
+  id_reservation: number;
+
+  people_qty: number;
+
+  date: Date;
+
+  comanda: string;
+
+  cpf_customer: string;
+
+  cpf_employee: string;
+}
+
+Reservation.init({
+  id_reservation: {
+    type: DataTypes.INTEGER,
     allowNull: false,
     autoIncrement: true,
     primaryKey: true,
-  })
-  id_reservation!: number;
+  },
 
-  @Column({
-    type: DataType.INTEGER,
+  people_qty: {
+    type: DataTypes.INTEGER,
     allowNull: false,
-  })
-  people_qty!: number;
+  },
 
-  @Column({
-    type: DataType.DATE,
+  date: {
+    type: DataTypes.DATE,
     allowNull: false,
-  })
-  date!: Date;
+  },
 
-  @Column({
-    type: DataType.STRING,
+  comanda: {
+    type: DataTypes.STRING,
     allowNull: false,
-  })
-  cpf_customer!: string;
+  },
 
-  @Column({
-    type: DataType.STRING,
+  cpf_customer: {
+    type: DataTypes.STRING,
     allowNull: false,
-  })
-  cpf_employee!: string;
+  },
 
-  @BelongsTo(() => Customer)
-  customer!: Customer;
+  cpf_employee: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  }
+}, {
+  underscored: true,
+  timestamps: false,
+  tableName: 'Customers',
+  sequelize, // Pass the Sequelize instance here
+  modelName: 'Customer',
+})
 
-  @BelongsTo(() => Employee)
-  employee!: Employee;
-}
+export default Reservation;

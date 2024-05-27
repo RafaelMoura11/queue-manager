@@ -1,23 +1,38 @@
-import { Table, Column, Model, DataType, BelongsTo, ForeignKey } from 'sequelize-typescript';
-import { Customer } from './Customer';
+import { Model, DataTypes, BelongsTo, ForeignKey } from 'sequelize';
+import sequelize from './';
+import Customer from './Customer';
 
-@Table({
-  timestamps: false,
-})
-export class CustomerPhone extends Model<CustomerPhone> {
-  @Column({
-    type: DataType.STRING,
+class CustomerPhone extends Model {
+  cpf_customer: string;
+
+  number: string;
+}
+
+CustomerPhone.init({
+  cpf_customer: {
+    type: DataTypes.STRING,
     allowNull: false,
     primaryKey: true,
-  })
-  cpf_customer!: string;
-
-  @Column({
-    type: DataType.STRING,
+  },
+  number: {
+    type: DataTypes.STRING,
     allowNull: false,
-  })
-  number!: string;
+  }
+}, {
+  underscored: true,
+  timestamps: false,
+  tableName: 'Customers',
+  sequelize,
+  modelName: 'Customer',
+})
 
-  @BelongsTo(() => Customer)
-  customer!: Customer;
-}
+// export class CustomerPhone extends Model {
+  
+//   cpf_customer!: string;
+
+  
+//   number!: string;
+
+//   @BelongsTo(() => Customer)
+//   customer!: Customer;
+// }

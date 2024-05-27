@@ -7,9 +7,9 @@
     "tsc": "npx tsc",
     "db:init": "npx sequelize-cli db:create && npx sequelize-cli db:migrate",
     "db:reset": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
-    "init": "node ./build/server.js",
+    "init": "node ./build/index.js",
     "start": "npm run tsc && npm run db:init && npm run init",
-    "dev": "nodemon ./src/server.js"
+    "dev": "ts-node-dev ./src/index.ts"
   },
   "dependencies": {
     "dotenv": "^16.4.5",
