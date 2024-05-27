@@ -1,24 +1,44 @@
-import { Table, Column, Model, DataType, BelongsTo, ForeignKey } from 'sequelize-typescript';
-import { Employee } from './Employee';
+import { Model, DataTypes } from 'sequelize';
+import sequelize from './';
+import Employee from './Employee';
 
-@Table({
-  timestamps: false,
-})
-export class EmployeePhone extends Model<EmployeePhone> {
-  @Column({
-    type: DataType.STRING,
+class EmployeePhone extends Model {
+  employee_cpf: string;
+  number: string;
+}
+
+EmployeePhone.init({
+  employee_cpf: {
+    type: DataTypes.STRING,
     allowNull: false,
     primaryKey: true,
-  })
-  employee_cpf!: string;
-
-  @Column({
-    type: DataType.STRING,
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE',
+  },
+  number: {
+    type: DataTypes.STRING,
     allowNull: false,
     unique: true,
-  })
-  number!: string;
+  }
+}, {
+  underscored: true,
+  timestamps: false,
+  tableName: 'EmployeePhones',
+  sequelize,
+  modelName: 'EmployeePhone',
+});
 
-  @BelongsTo(() => Employee)
-  employee!: Employee;
-}
+
+EmployeePhone.belongsTo(Employee, {
+  foreignKey: 'employee_cpf',
+  targetKey: 'cpf',
+  as: 'employee',
+});
+
+Employee.hasMany(EmployeePhone, {
+  foreignKey: 'employee_cpf',
+  sourceKey: 'cpf',
+  as: 'phones',
+});
+
+export default EmployeePhone;
