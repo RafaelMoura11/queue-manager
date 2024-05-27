@@ -1,19 +1,29 @@
-import { Table, Column, Model, DataType } from 'sequelize-typescript';
+import { Model, DataTypes } from 'sequelize';
+import sequelize from './'; // Assuming your Sequelize instance is exported
 
-@Table({
-  timestamps: false,
-})
-export class Customer extends Model<Customer> {
-  @Column({
-    type: DataType.STRING,
+class Customer extends Model {
+  cpf: string;
+
+  full_name: string;
+}
+
+Customer.init({
+  cpf: {
+    type: DataTypes.STRING,
     allowNull: false,
     primaryKey: true,
-  })
-  cpf!: string;
+  },
 
-  @Column({
-    type: DataType.STRING,
+  full_name: {
+    type: DataTypes.STRING,
     allowNull: false,
-  })
-  full_name!: string;
-}
+  }
+}, {
+  underscored: true,
+  timestamps: false,
+  tableName: 'Customers',
+  sequelize, // Pass the Sequelize instance here
+  modelName: 'Customer',
+})
+
+export default Customer;
