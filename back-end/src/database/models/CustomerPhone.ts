@@ -13,6 +13,8 @@ CustomerPhone.init({
     type: DataTypes.STRING,
     allowNull: false,
     primaryKey: true,
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE',
   },
   number: {
     type: DataTypes.STRING,
@@ -21,10 +23,24 @@ CustomerPhone.init({
 }, {
   underscored: true,
   timestamps: false,
-  tableName: 'Customers',
+  tableName: 'CustomerPhones',
   sequelize,
-  modelName: 'Customer',
+  modelName: 'CustomerPhone',
 })
+
+CustomerPhone.belongsTo(Customer, {
+  foreignKey: 'cpf_customer',
+  targetKey: 'cpf',
+  as: 'customer', // Nome do alias para a associação
+});
+
+Customer.hasMany(CustomerPhone, {
+  foreignKey: 'cpf_customer',
+  sourceKey: 'cpf',
+  as: 'phones',
+});
+
+export default CustomerPhone;
 
 // export class CustomerPhone extends Model {
   
