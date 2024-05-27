@@ -1,9 +1,10 @@
 import CustomerModel from '../database/models/Customer';
 import CustomerPhoneModel from '../database/models/CustomerPhone';
+import CustomerInterface from '../interfaces/Customer';
 
 export default class Customer {
-    static async getAll() {
-        const customers = await CustomerModel.findAll({
+    static async getAll(): Promise<CustomerInterface[]> {
+        const customers: CustomerInterface[] = await CustomerModel.findAll({
             include: [{
                 model: CustomerPhoneModel,
                 as: 'phones',
