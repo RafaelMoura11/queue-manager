@@ -7,10 +7,16 @@ body{
     font-style: normal;
     color: #BA9A2F;
 }
-
-#bem-vindo{
-    background-color: #ffff;
-    
+.form{
+    background-color: white;
+    width: 700px;
+    height: 500px;
+    display:grid;
+    align-items: center;
+    position: relative;
+    left: 370px;
+    top: 150px;
+    border-radius: 50px;
 }
 
 
@@ -21,10 +27,16 @@ body{
 .login{
     display: flex;
     flex-direction: column;
+    position: relative;
+    left: 17px;
+    bottom: 19px;
+    
 }
 
 #senha{
     font-size: 10px;
+    position: relative;
+    left: 20px;
 }
 
 .input-container{
@@ -32,6 +44,9 @@ body{
     outline: 0;
     border-bottom: 1px solid;
     border-color: #BA9A2F;
+    position: relative;
+    left: 17px;
+    top: 2px;
 }
 
 button[type="submit"]{
@@ -42,9 +57,25 @@ button[type="submit"]{
     background-color: #BA9A2F;
     color: #FFFF;
     cursor: pointer;
+    position: relative;
+    left: 280px;
 }
-
 h3{
     color: black;
 }
 
+.bem{
+    position: relative;
+    left: 17px;
+}
+.input{
+    border: 0;
+    border: 0;
+    outline: 0;
+    border-bottom: 1px solid;
+    border-color: #BA9A2F;
+    position: relative;
+    right: 20px;
+    width: 650px;
+    bottom: 5px;
+}
