@@ -4,7 +4,7 @@ import sequelize from './'; // Assuming your Sequelize instance is exported
 class Customer extends Model {
   cpf: string;
 
-  full_name: string;
+  fullName: string;
 }
 
 Customer.init({
@@ -14,9 +14,10 @@ Customer.init({
     primaryKey: true,
   },
 
-  full_name: {
+  fullName: {
     type: DataTypes.STRING,
     allowNull: false,
+    field: 'full_name'
   }
 }, {
   underscored: true,
