@@ -1,5 +1,6 @@
 import { Model, DataTypes } from 'sequelize';
 import sequelize from './'; // Assuming your Sequelize instance is exported
+import CustomerPhone from './CustomerPhone';
 
 class Customer extends Model {
   cpf: string;
@@ -22,7 +23,7 @@ Customer.init({
   underscored: true,
   timestamps: false,
   tableName: 'Customers',
-  sequelize, // Pass the Sequelize instance here
+  sequelize,
   modelName: 'Customer',
 })
 
