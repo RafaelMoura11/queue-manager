@@ -13,4 +13,12 @@ export default class Customer {
         });
         return customers;
     }
+
+    static async create(newCustomer: CustomerInterface) {
+        await CustomerModel.create({
+            cpf: newCustomer.cpf,
+            fullName: newCustomer.fullName
+        });
+        return true;
+    }
 }

@@ -7,4 +7,10 @@ export default class Customer {
         const customers: CustomerInterface[] = await CustomerService.getAll();
         return res.status(200).json(customers);
     }
+
+    static async create(req: Request, res: Response) {
+        const { cpf, fullName } = req.body;
+        await CustomerService.create({ cpf, fullName });
+        return res.status(201).json("Cliente registrado com sucesso!");
+    }
 }
