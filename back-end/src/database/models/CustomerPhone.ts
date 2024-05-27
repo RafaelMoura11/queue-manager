@@ -41,14 +41,3 @@ Customer.hasMany(CustomerPhone, {
 });
 
 export default CustomerPhone;
-
-// export class CustomerPhone extends Model {
-  
-//   cpf_customer!: string;
-
-  
-//   number!: string;
-
-//   @BelongsTo(() => Customer)
-//   customer!: Customer;
-// }

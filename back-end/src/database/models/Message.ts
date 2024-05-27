@@ -1,30 +1,46 @@
-import { Table, Column, Model, DataType, BelongsTo, ForeignKey } from 'sequelize-typescript';
-import { User } from './User';
+import { Model, DataTypes } from 'sequelize';
+import sequelize from './';
+import User from './User';
 
-@Table({
-  timestamps: false,
-})
-export class Message extends Model<Message> {
-  @Column({
-    type: DataType.INTEGER,
+class Message extends Model {
+  id_message: number;
+  message: string;
+  id_user: number;
+}
+
+Message.init({
+  id_message: {
+    type: DataTypes.INTEGER,
     allowNull: false,
     autoIncrement: true,
     primaryKey: true,
-  })
-  id_message!: number;
-
-  @Column({
-    type: DataType.STRING,
+  },
+  message: {
+    type: DataTypes.STRING,
     allowNull: false,
-  })
-  message!: string;
-
-  @Column({
-    type: DataType.INTEGER,
+  },
+  id_user: {
+    type: DataTypes.INTEGER,
     allowNull: false,
-  })
-  id_user!: number;
+    references: {
+      model: User,
+      key: 'id_user',
+    },
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE',
+  }
+}, {
+  underscored: true,
+  timestamps: false,
+  tableName: 'Messages',
+  sequelize,
+  modelName: 'Message',
+});
 
-  @BelongsTo(() => User)
-  user!: User;
-}
+Message.belongsTo(User, {
+  foreignKey: 'id_user',
+  targetKey: 'id_user',
+  as: 'user',
+});
+
+export default Message;

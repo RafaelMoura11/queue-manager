@@ -1,36 +1,51 @@
-import { Table, Column, Model, DataType, BelongsTo, ForeignKey } from 'sequelize-typescript';
-import { Employee } from './Employee';
+import { Model, DataTypes } from 'sequelize';
+import sequelize from './';
+import Employee from './Employee';
 
-@Table({
-  timestamps: false,
-})
-export class User extends Model<User> {
-  @Column({
-    type: DataType.INTEGER,
+class User extends Model {
+  id_user: number;
+  email: string;
+  password: string;
+  employee_cpf: string;
+}
+
+User.init({
+  id_user: {
+    type: DataTypes.INTEGER,
     allowNull: false,
     autoIncrement: true,
     primaryKey: true,
-  })
-  id_user!: number;
-
-  @Column({
-    type: DataType.STRING,
+  },
+  email: {
+    type: DataTypes.STRING,
     allowNull: false,
-  })
-  email!: string;
-
-  @Column({
-    type: DataType.STRING,
+  },
+  password: {
+    type: DataTypes.STRING,
     allowNull: false,
-  })
-  password!: string;
-
-  @Column({
-    type: DataType.STRING,
+  },
+  employee_cpf: {
+    type: DataTypes.STRING,
     allowNull: false,
-  })
-  employee_cpf!: string;
+    references: {
+      model: Employee,
+      key: 'cpf',
+    },
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE',
+  },
+}, {
+  underscored: true,
+  timestamps: false,
+  tableName: 'Users',
+  sequelize,
+  modelName: 'User',
+});
 
-  @BelongsTo(() => Employee)
-  employee!: Employee;
-}
+User.belongsTo(Employee, {
+  foreignKey: 'employee_cpf',
+  targetKey: 'cpf',
+  as: 'employee',
+});
+
+export default User;
