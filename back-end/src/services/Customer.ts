@@ -15,4 +15,14 @@ export default class Customer {
         });
         return true;
     }
+
+    static async update(customerToBeUpdated: CustomerInterface) {
+        await CustomerModel.update({
+            fullName: customerToBeUpdated.fullName,
+            phone: customerToBeUpdated.phone
+        }, { where: {
+            cpf: customerToBeUpdated.cpf
+        } });
+        return true;
+    }
 }

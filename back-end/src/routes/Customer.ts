@@ -5,5 +5,6 @@ const customerRoute = express.Router();
 
 customerRoute.get('/', CustomerController.getAll);
 customerRoute.post('/', CustomerController.create);
+customerRoute.put('/:cpf', CustomerController.update);
 
 export default customerRoute;
