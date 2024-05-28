@@ -8,6 +8,12 @@ export default class Customer {
         return res.status(200).json(customers);
     }
 
+    static async getByCPF(req: Request, res: Response) {
+        const { cpf } = req.params;
+        const customer: CustomerInterface | null = await CustomerService.getByCPF(cpf);
+        return res.status(200).json(customer);
+    }
+
     static async create(req: Request, res: Response) {
         const { cpf, fullName, phone } = req.body;
         await CustomerService.create({ cpf, fullName, phone });

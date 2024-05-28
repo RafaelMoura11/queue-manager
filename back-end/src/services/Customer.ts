@@ -7,6 +7,11 @@ export default class Customer {
         return customers;
     }
 
+    static async getByCPF(cpf: string) {
+        const customer: CustomerInterface | null = await CustomerModel.findOne({ where: { cpf } });
+        return customer;
+    }
+
     static async create(newCustomer: CustomerInterface) {
         await CustomerModel.create({
             cpf: newCustomer.cpf,
