@@ -30,4 +30,9 @@ export default class Customer {
         } });
         return true;
     }
+
+    static async delete(cpf: string) {
+        await CustomerModel.destroy({ where: { cpf } });
+        return true;
+    }
 }

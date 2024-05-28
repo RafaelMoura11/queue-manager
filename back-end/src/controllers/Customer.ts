@@ -26,4 +26,10 @@ export default class Customer {
         await CustomerService.update({ cpf, fullName, phone });
         return res.status(201).json("Cliente atualizado com sucesso!");
     }
+
+    static async delete(req: Request, res: Response) {
+        const { cpf } = req.params;
+        await CustomerService.delete(cpf);
+        return res.status(200).json("Cliente deletado!");
+    }
 }

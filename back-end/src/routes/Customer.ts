@@ -7,5 +7,6 @@ customerRoute.get('/', CustomerController.getAll);
 customerRoute.get('/:cpf', CustomerController.getByCPF);
 customerRoute.post('/', CustomerController.create);
 customerRoute.put('/:cpf', CustomerController.update);
+customerRoute.delete('/:cpf', CustomerController.delete);
 
 export default customerRoute;
