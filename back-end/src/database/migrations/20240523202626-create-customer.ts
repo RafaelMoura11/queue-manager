@@ -11,6 +11,10 @@ module.exports = {
       full_name: {
         allowNull: false,
         type: DataTypes.STRING
+      },
+      phone: {
+        allowNull: false,
+        type: DataTypes.STRING
       }
     });
   },

@@ -4,7 +4,9 @@ import sequelize from './';
 class Employee extends Model {
   cpf: string;
 
-  full_name: string;
+  fullName: string;
+
+  phone: string;
 }
 
 Employee.init({
@@ -14,7 +16,13 @@ Employee.init({
     primaryKey: true,
   },
 
-  full_name: {
+  fullName: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    field: 'full_name'
+  },
+
+  phone: {
     type: DataTypes.STRING,
     allowNull: false,
   }

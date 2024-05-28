@@ -5,6 +5,8 @@ class Customer extends Model {
   cpf: string;
 
   fullName: string;
+
+  phone: string;
 }
 
 Customer.init({
@@ -18,6 +20,11 @@ Customer.init({
     type: DataTypes.STRING,
     allowNull: false,
     field: 'full_name'
+  },
+
+  phone: {
+    type: DataTypes.STRING,
+    allowNull: false,
   }
 }, {
   underscored: true,
