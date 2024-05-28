@@ -12,6 +12,12 @@ export default class User {
     }
 
     static async register(data: RegisterInterface) {
+        const user = await EmployeeService.getByCPF(data.cpf);
+
+        if (user) {
+            throw new Error();
+        }
+        
         await EmployeeService.create({
             cpf: data.cpf,
             fullName: data.fullName,

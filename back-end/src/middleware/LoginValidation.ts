@@ -12,16 +12,16 @@ export default class LoginValidation {
     next: NextFunction,
   ) {
     const { email } = req.body;
-    if (!email) return next({ status: 400, message: 'All fields must be filled' });
+    if (!email) return next({ status: 400, message: 'Todos os campos devem ser preenchidos!' });
     if (!emailRegex.test(email)) {
       return next(
-        { status: 401, message: 'Incorrect email or password' },
+        { status: 401, message: 'Email e/ou senha incorreto(s)!' },
       );
     }
     const result = await User.findOne(
       { where: { email } },
     );
-    if (!result) return next({ status: 401, message: 'Incorrect email or password' });
+    if (!result) return next({ status: 401, message: 'Email e/ou senha incorreto(s)!' });
     req.body.user = result;
     return next();
   }
@@ -32,11 +32,11 @@ export default class LoginValidation {
     next: NextFunction,
   ) {
     const { password, user: { dataValues: { password: rightPassword, ...user } } } = req.body;
-    if (!password) return next({ status: 400, message: 'All fields must be filled' });
+    if (!password) return next({ status: 400, message: 'Todos os campos devem ser preenchidos!' });
     const compare = bcrypt.compareSync(password, rightPassword);
     if (!compare) {
       return next(
-        { status: 401, message: 'Incorrect email or password"' },
+        { status: 401, message: 'Email e/ou senha incorreto(s)!"' },
       );
     }
     req.body.user = user;
@@ -54,7 +54,7 @@ export default class LoginValidation {
       req.body.user = userLogin;
       next();
     } catch (e) {
-      next({ status: 401, message: 'You are not authorized' });
+      next({ status: 401, message: 'Você não está autorizado!' });
     }
   }
 }
