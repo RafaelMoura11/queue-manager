@@ -22,6 +22,12 @@ export default class Customer {
     }
 
     static async update(customerToBeUpdated: CustomerInterface) {
+        const customerExists = await this.getByCPF(customerToBeUpdated.cpf);
+
+        if (!customerExists) {
+            throw new Error();
+        }
+
         await CustomerModel.update({
             fullName: customerToBeUpdated.fullName,
             phone: customerToBeUpdated.phone
@@ -32,6 +38,11 @@ export default class Customer {
     }
 
     static async delete(cpf: string) {
+        const customerExists = await this.getByCPF(cpf);
+
+        if (!customerExists) {
+            throw new Error();
+        }
         await CustomerModel.destroy({ where: { cpf } });
         return true;
     }

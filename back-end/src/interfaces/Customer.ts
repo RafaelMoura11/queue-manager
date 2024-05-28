@@ -1,5 +1,5 @@
 export default interface Customer {
-    cpf: number | string;
+    cpf: string;
     fullName: string;
     phone: string;
 }
