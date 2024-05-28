@@ -9,8 +9,8 @@ export default class Customer {
     }
 
     static async create(req: Request, res: Response) {
-        const { cpf, fullName } = req.body;
-        await CustomerService.create({ cpf, fullName });
+        const { cpf, fullName, phone } = req.body;
+        await CustomerService.create({ cpf, fullName, phone });
         return res.status(201).json("Cliente registrado com sucesso!");
     }
 }
