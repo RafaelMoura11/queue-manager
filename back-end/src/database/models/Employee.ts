@@ -5,6 +5,8 @@ class Employee extends Model {
   cpf: string;
 
   full_name: string;
+
+  phone: string;
 }
 
 Employee.init({
@@ -15,6 +17,11 @@ Employee.init({
   },
 
   full_name: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+
+  phone: {
     type: DataTypes.STRING,
     allowNull: false,
   }
