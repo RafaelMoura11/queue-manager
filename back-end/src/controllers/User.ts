@@ -9,9 +9,13 @@ export default class UserController {
     return res.status(200).json({ user: req.body.user, token });
   }
 
-  static async register(req: Request, res: Response, next: NextFunction) {
-    const user = req.body;
-    UserService.register(user as RegisterInterface);
-    return res.status(200).json("Empregado registrado!");
+  static async register(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
+    try {
+        const user = req.body;
+        await UserService.register(user as RegisterInterface);
+        return res.status(200).json("Empregado registrado!");
+    } catch (e) {
+        return next({ status: 400, message: "Este empregado já está registrado!" });
+    }
   }
 }
