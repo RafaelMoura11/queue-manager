@@ -1,81 +1,91 @@
-body{
-    margin: 0;
-    padding: 0;
-    background-image: url(imagens/food-4k-1pf6px6ryqfjtnyr.jpg);
+*{
     font-family: "Kavoon", serif;
-    font-weight: 100;
-    font-style: normal;
-    color: #BA9A2F;
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
 }
-.form{
-    background-color: white;
-    width: 700px;
-    height: 500px;
-    display:grid;
-    align-items: center;
-    position: relative;
-    left: 370px;
-    top: 150px;
-    border-radius: 50px;
+body, html{
+    background-color: #BA9A2F;
+    height: 100vh;
+    width: 100vw;
 }
 
+main{
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+}
+
+section#login{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    width: 320px;
+    height: 550px;
+}
+
+section#login > div#imagem{
+    display: block;
+    background: url(imagens/adcbf8153e6c732a22e6e85cd2b14d65bb9524ce.webp) no-repeat;
+    background-size: cover;
+    height: 200px;
+}
+
+section#login > div#formulario {
+    display: block;
+    padding: 30px;
+}
+
+div#formulario > h2{
+    color:#BA9A2F;
+    margin-bottom: 5px;
+}
+
+
+div#formulario > h3{
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 15px;
+    padding-bottom: 20px ;
+}
+
+.input{
+    border: 0;
+    outline: 0;
+    border-bottom: 1px solid;
+    border-color: #BA9A2F;
+    width: 258px;
+    
+}
+
+.campo{
+    font-size: 13px;
+    padding-top: 15px;
+}
 
 .label{
     color: rgba(0, 0, 0, 0.5);
 }
 
-.login{
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    left: 17px;
-    bottom: 19px;
-    
-}
-
 #senha{
     font-size: 10px;
     position: relative;
-    left: 20px;
+    padding: 15px 0 15px 0;
 }
 
-.input-container{
-    border: 0;
-    outline: 0;
-    border-bottom: 1px solid;
-    border-color: #BA9A2F;
-    position: relative;
-    left: 17px;
-    top: 2px;
-}
 
-button[type="submit"]{
-    width: 20%;
-    border: 0;
-    height: 48px;
-    border-radius: 300px;
+div > button[type=submit]{
+    display: block;
+    width: 90%;
+    height: 40px;
     background-color: #BA9A2F;
-    color: #FFFF;
+    color: white;
+    border: none;
+    border-radius: 30px;
     cursor: pointer;
-    position: relative;
-    left: 280px;
-}
-h3{
-    color: black;
 }
 
-.bem{
-    position: relative;
-    left: 17px;
-}
-.input{
-    border: 0;
-    border: 0;
-    outline: 0;
-    border-bottom: 1px solid;
-    border-color: #BA9A2F;
-    position: relative;
-    right: 20px;
-    width: 650px;
-    bottom: 5px;
+#send{
+    padding-top: 35px;
 }
