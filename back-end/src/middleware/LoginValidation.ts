@@ -52,16 +52,31 @@ export default class LoginValidation {
     const token = req.headers.authorization;
     try {
       const userLogin = JWTUtils.verify(token as string) as JwtPayload;
+      
+      req.body.user = userLogin;
+      next();
+    } catch (e) {
+      next({ status: 401, message: 'Você não está autorizados!' });
+    }
+  }
+
+  static async userExistsValidation(
+    req: Request,
+    _res: Response,
+    next: NextFunction,
+  ) {
+    const user = req.body.user;
+    try {
       const result = await User.findOne(
-        { where: { email: userLogin.email } },
+        { where: { email: user.email } },
       );
       if (!result) {
         throw new Error();
       }
-      req.body.user = userLogin;
       next();
     } catch (e) {
       next({ status: 401, message: 'Você não está autorizado!' });
     }
+
   }
 }
