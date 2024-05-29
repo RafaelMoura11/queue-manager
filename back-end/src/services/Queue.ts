@@ -3,28 +3,30 @@ import QueueInterface from '../interfaces/Queue';
 
 export default class Queue {
     static async getAll(): Promise<QueueInterface[]> {
-        const queues: QueueInterface[] = await QueueModel.findAll();
+        const queues: QueueInterface[] = await QueueModel.findAll({
+            attributes: ['idQueue', 'peopleQty', 'date', 'comanda', 'cpfCustomer', 'cpfEmployee']
+          });
         return queues;
     }
 
     static async create(newQueue: QueueInterface) {
         await QueueModel.create({
-            people_qty: newQueue.peopleQty,
+            peopleQty: newQueue.peopleQty,
             date: newQueue.date,
             comanda: newQueue.comanda,
-            cpf_customer: newQueue.cpfCustomer,
-            cpf_employee: newQueue.cpfEmployee
+            cpfCustomer: newQueue.cpfCustomer,
+            cpfEmployee: newQueue.cpfEmployee
         });
         return true;
     }
 
     static async update(queueToBeUpdated: QueueInterface) {
         await QueueModel.update({
-            people_qty: queueToBeUpdated.peopleQty,
+            peopleQty: queueToBeUpdated.peopleQty,
             date: queueToBeUpdated.date,
             comanda: queueToBeUpdated.comanda,
-            cpf_customer: queueToBeUpdated.cpfCustomer,
-            cpf_employee: queueToBeUpdated.cpfEmployee
+            cpfCustomer: queueToBeUpdated.cpfCustomer,
+            cpfEmployee: queueToBeUpdated.cpfEmployee
         }, { where: {
             id_queue: queueToBeUpdated.idQueue
         } });
