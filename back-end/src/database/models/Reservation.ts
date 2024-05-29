@@ -4,36 +4,34 @@ import Customer from './Customer';
 import Employee from './Employee';
 
 class Reservation extends Model {
-  id_reservation: number;
-  people_qty: number;
+  idReservation: number;
+  peopleQty: number;
   date: Date;
-  comanda: string;
-  cpf_customer: string;
-  cpf_employee: string;
+  cpfCustomer: string;
+  cpfEmployee: string;
 }
 
 Reservation.init({
-  id_reservation: {
+  idReservation: {
     type: DataTypes.INTEGER,
     allowNull: false,
     autoIncrement: true,
     primaryKey: true,
+    field: 'id_reservation'
   },
-  people_qty: {
+  peopleQty: {
     type: DataTypes.INTEGER,
     allowNull: false,
+    field: 'people_qty'
   },
   date: {
     type: DataTypes.DATE,
     allowNull: false,
   },
-  comanda: {
+  cpfCustomer: {
     type: DataTypes.STRING,
     allowNull: false,
-  },
-  cpf_customer: {
-    type: DataTypes.STRING,
-    allowNull: false,
+    field: 'cpf_customer',
     references: {
       model: Customer,
       key: 'cpf',
@@ -41,9 +39,10 @@ Reservation.init({
     onUpdate: 'CASCADE',
     onDelete: 'CASCADE',
   },
-  cpf_employee: {
+  cpfEmployee: {
     type: DataTypes.STRING,
     allowNull: false,
+    field: 'cpf_employee',
     references: {
       model: Employee,
       key: 'cpf',
