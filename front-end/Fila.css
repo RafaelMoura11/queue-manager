@@ -36,7 +36,7 @@ section#principal {
     width: 60px;
     height: 60px;
     position: relative;
-    right:70px;
+    right:40px;
     top: 40px;
 }
 section#principal > div#frame {
@@ -45,15 +45,16 @@ section#principal > div#frame {
 }
 
 div#frame > h2{
+    text-align: center;
     position: relative;
-    left: 50px;
-    margin-bottom: 10px;
+    /* left: 50px;
+    margin-bottom: 10px; */
 
 }
   
-
-
 #button{
+    
+   
     border: none; 
     border-radius: 50px;
     margin: 15px;
@@ -63,6 +64,11 @@ div#frame > h2{
     height: 40px;
     padding: 20px 90px 40px 0 ;
 
+}
+ul{
+    list-style-type: none;
+    padding-left: 0;
+    text-align: center;
 }
 
 
@@ -75,11 +81,31 @@ div#frame > h2{
     color: rgba(0, 0, 0, 0.5);
 }
 
-
-buttons{
-    padding: 20px 90px 40px 0 ;
-    display: grid;
-    height: 350px;
-    width: 330px;
-    
-} 
+#x{
+    width: 30px;
+    height: 30px;
+    position: relative;
+    left: 148px;
+    top: 75px;
+}
+#x2{
+    width: 30px;
+    height: 30px;
+    position: relative;
+    left: 116px;
+    top: 113px;
+}
+#x3{
+    width: 30px;
+    height: 30px;
+    position: relative;
+    left: 84px;
+    top: 150px;
+}
+#x4{
+    width: 30px;
+    height: 30px;
+    position: relative;
+    left:  50px;
+    top: 185px;
+}
