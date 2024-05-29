@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import bcrypt = require('bcryptjs');
 import User from '../database/models/User';
 import JWTUtils from '../utils/JWT';
+import { JwtPayload } from 'jsonwebtoken';
 
 const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
 
@@ -50,7 +51,13 @@ export default class LoginValidation {
   ) {
     const token = req.headers.authorization;
     try {
-      const userLogin = JWTUtils.verify(token as string);
+      const userLogin = JWTUtils.verify(token as string) as JwtPayload;
+      const result = await User.findOne(
+        { where: { email: userLogin.email } },
+      );
+      if (!result) {
+        throw new Error();
+      }
       req.body.user = userLogin;
       next();
     } catch (e) {
