@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import bcrypt = require('bcryptjs');
 import User from '../database/models/User';
 import JWTUtils from '../utils/JWT';
+import { JwtPayload } from 'jsonwebtoken';
 
 const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
 
@@ -50,11 +51,32 @@ export default class LoginValidation {
   ) {
     const token = req.headers.authorization;
     try {
-      const userLogin = JWTUtils.verify(token as string);
+      const userLogin = JWTUtils.verify(token as string) as JwtPayload;
+      
       req.body.user = userLogin;
+      next();
+    } catch (e) {
+      next({ status: 401, message: 'Você não está autorizados!' });
+    }
+  }
+
+  static async userExistsValidation(
+    req: Request,
+    _res: Response,
+    next: NextFunction,
+  ) {
+    const user = req.body.user;
+    try {
+      const result = await User.findOne(
+        { where: { email: user.email } },
+      );
+      if (!result) {
+        throw new Error();
+      }
       next();
     } catch (e) {
       next({ status: 401, message: 'Você não está autorizado!' });
     }
+
   }
 }
