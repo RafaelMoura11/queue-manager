@@ -10,27 +10,33 @@
     <title>Mascate</title>
 </head>
 <body>
-    <div class="form"> 
-        <div class="bem">
-        <h1>Bem vindo!</h2>
-        <h3 class="label">Faça login para se conectar: </h4>
-        </div>
-        <form class="login">
-            <div class="login">
-                <label for="email" class="label"> E-mail </label>
-                <input type="email" class="input"/>
+    <main>
+        <section id="login">
+            <div id="imagem">
+        
             </div>
-            <div class="login">
-                <label for="password" class="label"> Senha </label>
-                <input type="password" class="input"/>
+            <div id="formulario">
+                <h2>Bem vindo!</h2>
+                <h3>Faça login para se conectar: </h3>
+                <form>
+                    <div class="campo">
+                        <label for="email" class="label"> E-mail </label>
+                        <input  type="email" class="input"  />
+                    </div>
+                    <div class="campo">
+                        <label for="password" class="label"> Senha </label>
+                        <input type="password" class="input" autocomplete="current-password" required minlength="8" maxlength="20"/>
+                    </div>
+                    <div id="senha">
+                        <input type="checkbox" />
+                        <label class="label" >Lembrar senha</label>
+                    </div>
+                    <div id="send">
+                        <button type="submit">Entrar</button>
+                    </div>
+                </form>
             </div>
-            
-            <div>
-                <input type="checkbox" class="input-container"/>
-                <label class="label" id="senha">Lembrar senha</label>
-                
-            </div>
-        </form>
-        <button type="submit">Entrar</button>
-    </div>
+        </section>
+    </main>
+</body>
 </html>
