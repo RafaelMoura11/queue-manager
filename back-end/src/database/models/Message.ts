@@ -3,25 +3,27 @@ import sequelize from './';
 import User from './User';
 
 class Message extends Model {
-  id_message: number;
+  idMessage: number;
   message: string;
-  id_user: number;
+  idUser: number;
 }
 
 Message.init({
-  id_message: {
+  idMessage: {
     type: DataTypes.INTEGER,
     allowNull: false,
     autoIncrement: true,
     primaryKey: true,
+    field: 'id_message'
   },
   message: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  id_user: {
+  idUser: {
     type: DataTypes.INTEGER,
     allowNull: false,
+    field: 'id_user',
     references: {
       model: User,
       key: 'id_user',

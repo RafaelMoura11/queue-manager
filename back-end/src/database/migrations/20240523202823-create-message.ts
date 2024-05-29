@@ -2,32 +2,28 @@ import { QueryInterface, DataTypes } from 'sequelize';
 
 module.exports = {
   up: async (queryInterface: QueryInterface) => {
-    await queryInterface.createTable('Users', {
-      id_user: {
+    await queryInterface.createTable('Messages', {
+      id_message: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: DataTypes.INTEGER
       },
-      email: {
+      message: {
         allowNull: false,
         type: DataTypes.STRING
       },
-      password: {
+      id_user: {
         allowNull: false,
-        type: DataTypes.STRING
-      },
-      employee_cpf: {
-        allowNull: false,
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         references: {
-          model: 'Employees',
-          key: 'cpf'
+          model: 'Users',
+          key: 'id_user'
         }
       }
     });
   },
   down: async (queryInterface: QueryInterface) => {
-    await queryInterface.dropTable('Users');
+    await queryInterface.dropTable('Messages');
   }
 };
