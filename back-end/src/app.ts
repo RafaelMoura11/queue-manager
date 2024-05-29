@@ -27,7 +27,8 @@ export default class App {
   public use(route: express.Router | express.ErrorRequestHandler, routeName?: string): void {
     if (routeName) {
       this.app.use(routeName, route);
+    } else {
+      this.app.use(route);
     }
-    this.app.use(route);
   }
 }
