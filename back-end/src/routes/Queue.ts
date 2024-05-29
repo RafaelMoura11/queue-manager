@@ -5,7 +5,7 @@ import LoginValidation from '../middleware/LoginValidation';
 const queueRoute = express.Router();
 
 queueRoute.get('/', QueueController.getAll);
-queueRoute.post('/', LoginValidation.jwtValidation, QueueController.create);
-queueRoute.put('/:cpf', LoginValidation.jwtValidation, QueueController.update);
+queueRoute.post('/', LoginValidation.jwtValidation, LoginValidation.userExistsValidation, QueueController.create);
+queueRoute.put('/:cpf', LoginValidation.jwtValidation, LoginValidation.userExistsValidation, QueueController.update);
 
 export default queueRoute;
