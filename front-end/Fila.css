@@ -109,3 +109,14 @@ ul{
     left:  50px;
     top: 185px;
 }
+#button2{
+    border: none; 
+    border-radius: 50px;
+    margin: 15px;
+    font-size: 17px;
+    background-color: #BA9A2F;
+    text-align: center;
+    height: 40px;
+   
+
+}
