@@ -17,8 +17,6 @@ main{
     position: relative;
 }
 
-
-
 section#principal {
     position: absolute;
     top: 50%;
@@ -27,96 +25,70 @@ section#principal {
     width: 250px;
     height: 500px;
 }
+
 #mascate{ 
     display: block;
     width: 270px;
-    padding-bottom: 40px;
-} 
-#cadeira{
-    width: 60px;
-    height: 60px;
-    position: relative;
-    right:40px;
-    top: 40px;
 }
+
 section#principal > div#frame {
     display: block;
     padding: 10px;
 }
 
-div#frame > h2{
+#principal > h2 {
     text-align: center;
-    position: relative;
-    /* left: 50px;
-    margin-bottom: 10px; */
-
+    padding-bottom: 10px;
 }
-  
-#button{
+
+#head{
+    display: flex;
+}
+
+#head img{
+    width: 40px;
+}
+
+#head > h4 {
+    margin-left:  60px;
     
-   
-    border: none; 
-    border-radius: 50px;
-    margin: 15px;
-    font-size: 17px;
-    background-color: #D9D9D9;
-    text-align: center;
-    height: 40px;
-    padding: 20px 90px 40px 0 ;
-
 }
+
 ul{
     list-style-type: none;
     padding-left: 0;
     text-align: center;
 }
 
-
-
-.opcao{
-    border: 0px; 
-    border-radius: 50px;
-    margin: 15px;
-    font-size: 17px;
-    color: rgba(0, 0, 0, 0.5);
+.lista > ul {
+    display: flex;
+    justify-content: space-between;
 }
 
-#x{
-    width: 30px;
-    height: 30px;
-    position: relative;
-    left: 148px;
-    top: 75px;
+.lista{
+    padding: 15px;
 }
-#x2{
-    width: 30px;
-    height: 30px;
-    position: relative;
-    left: 116px;
-    top: 113px;
+
+.btn-del{
+    width: 26px;
+    flex-shrink: 0;
+    cursor: pointer;
 }
-#x3{
-    width: 30px;
-    height: 30px;
-    position: relative;
-    left: 84px;
-    top: 150px;
+
+span{
+    margin: 0 auto;
+    padding: 40px 0 0 50px;
+    position: absolute;
 }
-#x4{
-    width: 30px;
-    height: 30px;
-    position: relative;
-    left:  50px;
-    top: 185px;
-}
-#button2{
-    border: none; 
-    border-radius: 50px;
-    margin: 15px;
-    font-size: 17px;
-    background-color: #BA9A2F;
-    text-align: center;
+
+#buttons2 > button{
+    display: block;
+    margin-left: 10px;
+    width: 90%;
     height: 40px;
-   
-
+    background-color: #BA9A2F;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
 }
