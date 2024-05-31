@@ -4,24 +4,26 @@ import Customer from './Customer';
 import Employee from './Employee';
 
 class Queue extends Model {
-  id_queue: number;
-  people_qty: number;
+  idQueue: number;
+  peopleQty: number;
   date: Date;
   comanda: string;
-  cpf_customer: string;
-  cpf_employee: string;
+  cpfCustomer: string;
+  cpfEmployee: string;
 }
 
 Queue.init({
-  id_queue: {
+  idQueue: {
     type: DataTypes.INTEGER,
     allowNull: false,
     autoIncrement: true,
     primaryKey: true,
+    field: 'id_queue'
   },
-  people_qty: {
+  peopleQty: {
     type: DataTypes.INTEGER,
     allowNull: false,
+    field: 'people_qty'
   },
   date: {
     type: DataTypes.DATE,
@@ -31,9 +33,10 @@ Queue.init({
     type: DataTypes.STRING,
     allowNull: false,
   },
-  cpf_customer: {
+  cpfCustomer: {
     type: DataTypes.STRING,
     allowNull: false,
+    field: 'cpf_customer',
     references: {
       model: Customer,
       key: 'cpf',
@@ -41,9 +44,10 @@ Queue.init({
     onUpdate: 'CASCADE',
     onDelete: 'CASCADE',
   },
-  cpf_employee: {
+  cpfEmployee: {
     type: DataTypes.STRING,
     allowNull: false,
+    field: 'cpf_employee',
     references: {
       model: Employee,
       key: 'cpf',

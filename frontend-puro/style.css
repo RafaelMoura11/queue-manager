@@ -1,0 +1,81 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-image: url(imagens/food-4k-1pf6px6ryqfjtnyr.jpg);
+    font-family: "Kavoon", serif;
+    font-weight: 100;
+    font-style: normal;
+    color: #BA9A2F;
+}
+.form{
+    background-color: white;
+    width: 700px;
+    height: 500px;
+    display:grid;
+    align-items: center;
+    position: relative;
+    left: 370px;
+    top: 150px;
+    border-radius: 50px;
+}
+
+
+.label{
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.login{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left: 17px;
+    bottom: 19px;
+    
+}
+
+#senha{
+    font-size: 10px;
+    position: relative;
+    left: 20px;
+}
+
+.input-container{
+    border: 0;
+    outline: 0;
+    border-bottom: 1px solid;
+    border-color: #BA9A2F;
+    position: relative;
+    left: 17px;
+    top: 2px;
+}
+
+button[type="submit"]{
+    width: 20%;
+    border: 0;
+    height: 48px;
+    border-radius: 300px;
+    background-color: #BA9A2F;
+    color: #FFFF;
+    cursor: pointer;
+    position: relative;
+    left: 280px;
+}
+h3{
+    color: black;
+}
+
+.bem{
+    position: relative;
+    left: 17px;
+}
+.input{
+    border: 0;
+    border: 0;
+    outline: 0;
+    border-bottom: 1px solid;
+    border-color: #BA9A2F;
+    position: relative;
+    right: 20px;
+    width: 650px;
+    bottom: 5px;
+}
