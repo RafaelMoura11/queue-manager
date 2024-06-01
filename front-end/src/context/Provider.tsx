@@ -1,6 +1,10 @@
 import MyContext from './MyContext';
 
-function Provider({ children }) {
+type Props = {
+    children: React.ReactNode
+}
+
+function Provider({ children }: Props) {
 
     const statesAndFunctions = {};
 
