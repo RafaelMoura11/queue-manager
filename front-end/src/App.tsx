@@ -3,6 +3,7 @@ import Provider from './context/Provider';
 import Menu from './pages/Menu';
 import QueueForm from './pages/QueueForm';
 import Queues from './pages/Queues';
+import Reservations from './pages/Reservations';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
           <Route path="/" element={ <Menu /> } />
           <Route path="/queue-form" element={ <QueueForm /> } />
           <Route path="/queues" element={ <Queues /> } />
+          <Route path="/reservations" element={ <Reservations /> } />
         </Routes>
       </Provider>
     </BrowserRouter>

@@ -12,7 +12,7 @@ const Menu: React.FC = () => {
                     <div id="buttons">    
                         <button className="opcao"><Link to="/queue-form">Adicionar Fila</Link></button>
                         <button className="opcao"><Link to="/queues">Fila</Link></button>
-                        <button className="opcao">Reserva</button>
+                        <button className="opcao"><Link to="/reservations">Reserva</Link></button>
                         <button className="opcao">Lista de Reserva</button>
                     </div> 
                 </div>
