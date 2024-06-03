@@ -1,4 +1,4 @@
-import '../css/queueform.css';
+import '../css/index.css';
 
 const QueueForm: React.FC = () => {
     return (
