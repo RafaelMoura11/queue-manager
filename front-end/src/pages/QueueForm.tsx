@@ -1,3 +1,5 @@
+import '../css/queueform.css';
+
 const QueueForm: React.FC = () => {
     return (
         <div>
