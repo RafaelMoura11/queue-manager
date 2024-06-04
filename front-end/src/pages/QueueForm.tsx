@@ -1,6 +1,27 @@
+import { useState } from 'react';
 import '../css/index.css';
+import api from '../api';
 
 const QueueForm: React.FC = () => {
+    const [queueForm, setQueueForm] = useState({
+        fullName: "",
+        peopleQty: "0",
+        phone: ""
+    });
+    
+    const formHandler = (name: string, value: string) => {
+        setQueueForm({ ...queueForm, [value]: name });
+    }
+
+    const submitHandler = async () => {
+        try {
+            await api.post("", queueForm);
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+
     return (
         <div>
             <span className="material-symbols-outlined">arrow_back</span>
@@ -11,21 +32,21 @@ const QueueForm: React.FC = () => {
                         <h2>Adicionar Fila</h2>
                         <div id="form">
                             <div>
-                                <label htmlFor="name" className="label"></label>
-                                <input type="text" className="input-container" name="name"  placeholder="Nome Cliente"/>
+                                <label htmlFor="fullName" className="label"></label>
+                                <input type="text" className="input-container" name="fullName" placeholder="Nome Cliente" onChange={ ({ target: { name, value } }) => formHandler(name, value) }/>
                             </div>
                             <div>
-                                <label htmlFor="quantity" className="label"></label>
-                                <input type="number" className="input-container" name="quantity" placeholder="Numero de pessoas"/>
+                                <label htmlFor="peopleQty" className="label"></label>
+                                <input type="number" className="input-container" name="peopleQty" placeholder="Numero de pessoas" onChange={ ({ target: { name, value } }) => formHandler(name, value) }/>
                             </div>
                             <div>
                                 <label htmlFor="phone" className="label"></label>
-                                <input type="tel" className="input-container" name="phone" maxLength={ 10 } placeholder="Telefone"/>
+                                <input type="tel" className="input-container" name="phone" maxLength={ 10 } placeholder="Telefone" onChange={ ({ target: { name, value } }) => formHandler(name, value) }/>
                             </div>
                         </div>
                     </div> 
                     <div id="btn-addfila">
-                        <button className="opcao">Adicionar a fila</button>
+                        <button className="opcao" onClick={ submitHandler }>Adicionar a fila</button>
                     </div>
                 </section>  
             </main>
