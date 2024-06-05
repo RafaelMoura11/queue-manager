@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import '../css/index.css';
+import mascatelogo from '../images/Captura de tela 2024-05-22 161444.png';
 import api from '../api';
 
 const TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVtYWlsQGVtYWlsLmNvbSIsInBhc3N3b3JkIjoic2VuaGExMjMiLCJ1c2VyIjp7ImlkX3VzZXIiOjEsImVtYWlsIjoiZW1haWxAZW1haWwuY29tIiwiZW1wbG95ZWVfY3BmIjoiMTExMTExMTExMTEifSwiaWF0IjoxNzE3NjA4OTc2LCJleHAiOjE3MTgyMTM3NzZ9.XjfCOGFMFY7j9dmQBLTC6QkwrWoCyDB6SesbphLMK-g";
@@ -36,7 +37,7 @@ const QueueForm: React.FC = () => {
             <span className="material-symbols-outlined">arrow_back</span>
             <main>
                 <section id="principal">
-                    <img src="imagens/Captura de tela 2024-05-22 161444.png" alt="" />
+                    <img src={ mascatelogo } alt="" />
                     <div id="frame">
                         <h2>Adicionar Fila</h2>
                         <div id="form">
