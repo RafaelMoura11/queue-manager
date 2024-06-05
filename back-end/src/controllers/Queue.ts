@@ -14,7 +14,7 @@ export default class Queue {
             await QueueService.create({ peopleQty, date, comanda, cpfCustomer, cpfEmployee });
             return res.status(201).json("Fila adicionada com sucesso!");
         } catch (e) {
-            return next({ status: 500, message: "Algo deu errado!" });
+            return next({ status: 500, message: e});
         }
     }
 

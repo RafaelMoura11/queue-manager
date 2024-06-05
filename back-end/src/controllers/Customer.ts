@@ -10,11 +10,15 @@ export default class Customer {
 
     static async getByCPF(req: Request, res: Response, next: NextFunction) {
         const { cpf } = req.params;
-        const customer: CustomerInterface | null = await CustomerService.getByCPF(cpf);
-        if (customer) {
-            return res.status(200).json(customer);
-        } else {
-            return next({ status: 404, message: "Cliente não encontrado!" });
+        try {
+            const customer: CustomerInterface | null = await CustomerService.getByCPF(cpf);
+            if (customer) {
+                return res.status(200).json(customer);
+            } else {
+                return res.status(404).json("Cliente não encontrado!");
+            }
+        } catch(e) {
+            return next({ status: 500, message: e });
         }
     }
 
@@ -24,7 +28,7 @@ export default class Customer {
             await CustomerService.create({ cpf, fullName, phone });
             return res.status(201).json("Cliente registrado com sucesso!");
         } catch (e) {
-            return next({ status: 400, message: "O cliente já está registrado!" });
+            return next({ status: 500, message: e });
         }
     }
 

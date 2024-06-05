@@ -2,22 +2,31 @@ import { useState } from 'react';
 import '../css/index.css';
 import api from '../api';
 
+const TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVtYWlsQGVtYWlsLmNvbSIsInBhc3N3b3JkIjoic2VuaGExMjMiLCJ1c2VyIjp7ImlkX3VzZXIiOjEsImVtYWlsIjoiZW1haWxAZW1haWwuY29tIiwiZW1wbG95ZWVfY3BmIjoiMTExMTExMTExMTEifSwiaWF0IjoxNzE3NjA4OTc2LCJleHAiOjE3MTgyMTM3NzZ9.XjfCOGFMFY7j9dmQBLTC6QkwrWoCyDB6SesbphLMK-g";
+
 const QueueForm: React.FC = () => {
     const [queueForm, setQueueForm] = useState({
+        cpf: "",
         fullName: "",
+        comanda: "",
+        date: new Date(),
         peopleQty: "0",
         phone: ""
     });
     
     const formHandler = (name: string, value: string) => {
-        setQueueForm({ ...queueForm, [value]: name });
+        setQueueForm({ ...queueForm, [name]: value });
     }
 
     const submitHandler = async () => {
         try {
-            await api.post("", queueForm);
+            const customerExists = await api.get(`/customers/${queueForm.cpf}`, { headers: { Authorization: TOKEN } });
+            if (customerExists) {
+                await api.post("/queues", { ...queueForm, peopleQty: Number(queueForm.peopleQty), cpfCustomer: queueForm.cpf, cpfEmployee: "11111111111" }, { headers: { Authorization: TOKEN } });
+            }
         } catch (e) {
-            console.log(e);
+            await api.post("/customers", { cpf: queueForm.cpf, fullName: queueForm.fullName, phone: queueForm.phone }, { headers: { Authorization: TOKEN } });
+            await api.post("/queues", { ...queueForm, peopleQty: Number(queueForm.peopleQty), cpfCustomer: queueForm.cpf, cpfEmployee: "11111111111" }, { headers: { Authorization: TOKEN } });
         }
     }
 
@@ -32,8 +41,16 @@ const QueueForm: React.FC = () => {
                         <h2>Adicionar Fila</h2>
                         <div id="form">
                             <div>
+                                <label htmlFor="cpf" className="label"></label>
+                                <input type="text" className="input-container" name="cpf" placeholder="CPF Cliente" onChange={ ({ target: { name, value } }) => formHandler(name, value) }/>
+                            </div>
+                            <div>
                                 <label htmlFor="fullName" className="label"></label>
                                 <input type="text" className="input-container" name="fullName" placeholder="Nome Cliente" onChange={ ({ target: { name, value } }) => formHandler(name, value) }/>
+                            </div>
+                            <div>
+                                <label htmlFor="comanda" className="label"></label>
+                                <input type="text" className="input-container" name="comanda" placeholder="Comanda" onChange={ ({ target: { name, value } }) => formHandler(name, value) }/>
                             </div>
                             <div>
                                 <label htmlFor="peopleQty" className="label"></label>
