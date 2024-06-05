@@ -31,7 +31,7 @@ const Queues: React.FC = () => {
                             <div className="lista">
                                 <ul>
                                     <h4>{ queue.peopleQty }</h4>
-                                    <li>{ queue.cpfCustomer }</li>
+                                    <li>{ queue.customer.fullName }</li>
                                     <img className="btn-del" src={ perto } alt="Delete Button" />
                                 </ul>
                             </div>

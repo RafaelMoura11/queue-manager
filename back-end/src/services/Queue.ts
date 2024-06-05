@@ -1,10 +1,17 @@
+import Customer from '../database/models/Customer';
 import QueueModel from '../database/models/Queue';
 import QueueInterface from '../interfaces/Queue';
 
 export default class Queue {
     static async getAll(): Promise<QueueInterface[]> {
         const queues: QueueInterface[] = await QueueModel.findAll({
-            attributes: ['idQueue', 'peopleQty', 'date', 'comanda', 'cpfCustomer', 'cpfEmployee']
+            attributes: ['idQueue', 'peopleQty', 'date', 'comanda', 'cpfCustomer', 'cpfEmployee'],
+            include: [{
+                model: Customer,
+                attributes: ['fullName'],
+                as: 'customer',
+                required: false, // isso faz com que o join seja um LEFT JOIN
+              }]
           });
         return queues;
     }

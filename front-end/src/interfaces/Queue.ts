@@ -5,4 +5,7 @@ export default interface Queue {
     comanda: string;
     cpfCustomer: string;
     cpfEmployee: string;
+    customer: {
+        fullName: string;
+    }
 }
