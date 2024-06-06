@@ -6,6 +6,8 @@ import perto from '../images/perto.png';
 import api from '../api';
 import QueueInterface from '../interfaces/Queue';
 
+const TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVtYWlsQGVtYWlsLmNvbSIsInBhc3N3b3JkIjoic2VuaGExMjMiLCJ1c2VyIjp7ImlkX3VzZXIiOjEsImVtYWlsIjoiZW1haWxAZW1haWwuY29tIiwiZW1wbG95ZWVfY3BmIjoiMTExMTExMTExMTEifSwiaWF0IjoxNzE3Njc2NTQ3LCJleHAiOjE3MTgyODEzNDd9.tXFPiPmYB7nYteIlQGHWCuOcO2cho7H0mm0emkxTR04";
+
 const Queues: React.FC = () => {
     const [queues, setQueues] = useState<QueueInterface[]>([]);
     useEffect(() => {
@@ -15,6 +17,13 @@ const Queues: React.FC = () => {
         }
         fetchQueueData();
     }, [])
+
+    const removeQueue = async (queueToRemove: QueueInterface) => {
+        const newQueue = queues.filter((q) => q.idQueue !== queueToRemove.idQueue);
+        await api.put(`/queues/${queueToRemove.idQueue}`, { ...queueToRemove, isActive: false }, { headers: { Authorization: TOKEN } });
+        return setQueues(newQueue);
+    }
+
     return (
         <div>
             <span className="material-symbols-outlined">arrow_back</span>
@@ -28,11 +37,11 @@ const Queues: React.FC = () => {
                     </div>
                     {
                         queues.map((queue) => (
-                            <div className="lista">
+                            <div className="lista" key={ queue.idQueue }>
                                 <ul>
                                     <h4>{ queue.peopleQty }</h4>
                                     <li>{ queue.customer.fullName }</li>
-                                    <img className="btn-del" src={ perto } alt="Delete Button" />
+                                    <img className="btn-del" src={ perto } alt="Delete Button" onClick={ () => removeQueue(queue) } />
                                 </ul>
                             </div>
                         ))

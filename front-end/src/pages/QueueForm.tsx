@@ -9,7 +9,7 @@ const QueueForm: React.FC = () => {
     const [queueForm, setQueueForm] = useState({
         cpf: "",
         fullName: "",
-        isActive: false,
+        isActive: true,
         date: new Date(),
         peopleQty: "0",
         phone: ""

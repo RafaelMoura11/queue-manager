@@ -23,7 +23,7 @@ export default class Queue {
         const { peopleQty, date, isActive, cpfCustomer, cpfEmployee } = req.body;
         try {
             await QueueService.update({ idQueue: Number(idQueue), peopleQty, date, isActive, cpfCustomer, cpfEmployee });
-            return res.status(201).json("Fila atualizada com sucesso!");
+            return res.status(201).json({ idQueue: Number(idQueue), peopleQty, date, isActive, cpfCustomer, cpfEmployee });
         } catch (e) {
             return next({ status: 500, message: "Algo deu errado!" });
         }

@@ -6,6 +6,6 @@ const queueRoute = express.Router();
 
 queueRoute.get('/', QueueController.getAll);
 queueRoute.post('/', LoginValidation.jwtValidation, LoginValidation.userExistsValidation, QueueController.create);
-queueRoute.put('/:cpf', LoginValidation.jwtValidation, LoginValidation.userExistsValidation, QueueController.update);
+queueRoute.put('/:idQueue', LoginValidation.jwtValidation, LoginValidation.userExistsValidation, QueueController.update);
 
 export default queueRoute;
