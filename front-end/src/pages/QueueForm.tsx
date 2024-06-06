@@ -3,13 +3,13 @@ import '../css/index.css';
 import mascatelogo from '../images/Captura de tela 2024-05-22 161444.png';
 import api from '../api';
 
-const TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVtYWlsQGVtYWlsLmNvbSIsInBhc3N3b3JkIjoic2VuaGExMjMiLCJ1c2VyIjp7ImlkX3VzZXIiOjEsImVtYWlsIjoiZW1haWxAZW1haWwuY29tIiwiZW1wbG95ZWVfY3BmIjoiMTExMTExMTExMTEifSwiaWF0IjoxNzE3NjA4OTc2LCJleHAiOjE3MTgyMTM3NzZ9.XjfCOGFMFY7j9dmQBLTC6QkwrWoCyDB6SesbphLMK-g";
+const TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVtYWlsQGVtYWlsLmNvbSIsInBhc3N3b3JkIjoic2VuaGExMjMiLCJ1c2VyIjp7ImlkX3VzZXIiOjEsImVtYWlsIjoiZW1haWxAZW1haWwuY29tIiwiZW1wbG95ZWVfY3BmIjoiMTExMTExMTExMTEifSwiaWF0IjoxNzE3Njc2NTQ3LCJleHAiOjE3MTgyODEzNDd9.tXFPiPmYB7nYteIlQGHWCuOcO2cho7H0mm0emkxTR04";
 
 const QueueForm: React.FC = () => {
     const [queueForm, setQueueForm] = useState({
         cpf: "",
         fullName: "",
-        comanda: "",
+        isActive: false,
         date: new Date(),
         peopleQty: "0",
         phone: ""
@@ -48,10 +48,6 @@ const QueueForm: React.FC = () => {
                             <div>
                                 <label htmlFor="fullName" className="label"></label>
                                 <input type="text" className="input-container" name="fullName" placeholder="Nome Cliente" onChange={ ({ target: { name, value } }) => formHandler(name, value) }/>
-                            </div>
-                            <div>
-                                <label htmlFor="comanda" className="label"></label>
-                                <input type="text" className="input-container" name="comanda" placeholder="Comanda" onChange={ ({ target: { name, value } }) => formHandler(name, value) }/>
                             </div>
                             <div>
                                 <label htmlFor="peopleQty" className="label"></label>

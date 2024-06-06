@@ -31,7 +31,8 @@ Queue.init({
   },
   isActive: {
     type: DataTypes.BOOLEAN,
-    allowNull: false
+    allowNull: false,
+    field: 'is_active'
   },
   cpfCustomer: {
     type: DataTypes.STRING,

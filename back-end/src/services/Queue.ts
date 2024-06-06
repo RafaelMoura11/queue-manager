@@ -11,7 +11,10 @@ export default class Queue {
                 attributes: ['fullName'],
                 as: 'customer',
                 required: false,
-              }]
+              }],
+            where: {
+                isActive: true
+            }
           });
         return queues;
     }
