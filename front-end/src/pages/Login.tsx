@@ -1,7 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import LoginInterface from "../interfaces/Login";
+import api from "../api";
+import MyContext from "../context/MyContext";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+    const { setToken } = useContext(MyContext);
+    const navigate = useNavigate();
     const [loginFields, setLoginFields] = useState<LoginInterface>({
         email: "",
         password: ""
@@ -9,6 +14,16 @@ const Login = () => {
 
     const loginHandler = (name: string, value: string) => {
         setLoginFields({ ...loginFields, [name]: value });
+    }
+
+    const loginClick = async () => {
+        try {
+            const loginResponse = await api.post("/users/login", loginFields);
+            setToken(loginResponse.data.token);
+            return navigate('/');
+        } catch (e) {
+            console.log(e);
+        }
     }
 
     return (
@@ -33,7 +48,7 @@ const Login = () => {
                             <label className="label" >Lembrar senha</label>
                         </div>
                         <div id="send">
-                            <button type="submit">Entrar</button>
+                            <button type="button" onClick={ loginClick }>Entrar</button>
                         </div>
                     </form>
                 </div>
