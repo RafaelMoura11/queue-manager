@@ -5,6 +5,7 @@ import cadeiradobravel from '../images/cadeira-dobravel.png';
 import perto from '../images/perto.png';
 import api from '../api';
 import QueueInterface from '../interfaces/Queue';
+import ArrowBack from '../components/ArrowBack';
 
 const TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVtYWlsQGVtYWlsLmNvbSIsInBhc3N3b3JkIjoic2VuaGExMjMiLCJ1c2VyIjp7ImlkX3VzZXIiOjEsImVtYWlsIjoiZW1haWxAZW1haWwuY29tIiwiZW1wbG95ZWVfY3BmIjoiMTExMTExMTExMTEifSwiaWF0IjoxNzE3Njc2NTQ3LCJleHAiOjE3MTgyODEzNDd9.tXFPiPmYB7nYteIlQGHWCuOcO2cho7H0mm0emkxTR04";
 
@@ -26,7 +27,7 @@ const Queues: React.FC = () => {
 
     return (
         <div>
-            <span className="material-symbols-outlined">arrow_back</span>
+            <ArrowBack />
             <main>
                 <section id="principal">
                     <img id="mascate" src={ mascatelogo } alt="Mascate Logo" />

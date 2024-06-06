@@ -1,3 +1,4 @@
+import ArrowBack from '../components/ArrowBack';
 import '../css/index.css';
 import mascatelogo from '../images/Captura de tela 2024-05-22 161444.png';
 
@@ -5,6 +6,7 @@ const Reservations: React.FC = () => {
     return (
         <div>
             <main> 
+                <ArrowBack />
                 <section id="principal">
                 <img src={ mascatelogo } alt="mascate-logo" />
                     <div id="frame">
