@@ -5,7 +5,7 @@ import QueueInterface from '../interfaces/Queue';
 export default class Queue {
     static async getAll(): Promise<QueueInterface[]> {
         const queues: QueueInterface[] = await QueueModel.findAll({
-            attributes: ['idQueue', 'peopleQty', 'date',  'cpfCustomer', 'cpfEmployee'],
+            attributes: ['idQueue', 'peopleQty', 'date', 'isActive',  'cpfCustomer', 'cpfEmployee'],
             include: [{
                 model: Customer,
                 attributes: ['fullName'],
@@ -20,6 +20,7 @@ export default class Queue {
         await QueueModel.create({
             peopleQty: newQueue.peopleQty,
             date: newQueue.date,
+            isActive: newQueue.isActive,
             cpfCustomer: newQueue.cpfCustomer,
             cpfEmployee: newQueue.cpfEmployee
         });
@@ -30,6 +31,7 @@ export default class Queue {
         await QueueModel.update({
             peopleQty: queueToBeUpdated.peopleQty,
             date: queueToBeUpdated.date,
+            isActive: queueToBeUpdated.isActive,
             cpfCustomer: queueToBeUpdated.cpfCustomer,
             cpfEmployee: queueToBeUpdated.cpfEmployee
         }, { where: {

@@ -17,6 +17,10 @@ module.exports = {
         allowNull: false,
         type: DataTypes.DATE
       },
+      isActive: {
+        allowNull: false,
+        type: DataTypes.BOOLEAN
+      },
       cpf_customer: {
         allowNull: false,
         type: DataTypes.STRING,
