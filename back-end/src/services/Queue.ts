@@ -5,12 +5,12 @@ import QueueInterface from '../interfaces/Queue';
 export default class Queue {
     static async getAll(): Promise<QueueInterface[]> {
         const queues: QueueInterface[] = await QueueModel.findAll({
-            attributes: ['idQueue', 'peopleQty', 'date', 'comanda', 'cpfCustomer', 'cpfEmployee'],
+            attributes: ['idQueue', 'peopleQty', 'date',  'cpfCustomer', 'cpfEmployee'],
             include: [{
                 model: Customer,
                 attributes: ['fullName'],
                 as: 'customer',
-                required: false, // isso faz com que o join seja um LEFT JOIN
+                required: false,
               }]
           });
         return queues;
@@ -20,7 +20,6 @@ export default class Queue {
         await QueueModel.create({
             peopleQty: newQueue.peopleQty,
             date: newQueue.date,
-            comanda: newQueue.comanda,
             cpfCustomer: newQueue.cpfCustomer,
             cpfEmployee: newQueue.cpfEmployee
         });
@@ -31,7 +30,6 @@ export default class Queue {
         await QueueModel.update({
             peopleQty: queueToBeUpdated.peopleQty,
             date: queueToBeUpdated.date,
-            comanda: queueToBeUpdated.comanda,
             cpfCustomer: queueToBeUpdated.cpfCustomer,
             cpfEmployee: queueToBeUpdated.cpfEmployee
         }, { where: {

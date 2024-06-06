@@ -17,10 +17,6 @@ module.exports = {
         allowNull: false,
         type: DataTypes.DATE
       },
-      comanda: {
-        allowNull: false,
-        type: DataTypes.STRING
-      },
       cpf_customer: {
         allowNull: false,
         type: DataTypes.STRING,
