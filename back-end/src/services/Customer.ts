@@ -25,7 +25,7 @@ export default class Customer {
         const customerExists = await this.getByCPF(customerToBeUpdated.cpf);
 
         if (!customerExists) {
-            throw new Error();
+            return false;
         }
 
         await CustomerModel.update({

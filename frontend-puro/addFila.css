@@ -17,8 +17,6 @@ main{
     position: relative;
 }
 
-
-
 section#principal {
     position: absolute;
     top: 50%;
@@ -27,17 +25,10 @@ section#principal {
     width: 250px;
     height: 500px;
 }
-#mascate{ 
+img{ 
     display: block;
     width: 270px;
     padding-bottom: 40px;
-} 
-#cadeira{
-    width: 60px;
-    height: 60px;
-    position: relative;
-    right:70px;
-    top: 40px;
 }
 section#principal > div#frame {
     display: block;
@@ -45,15 +36,25 @@ section#principal > div#frame {
 }
 
 div#frame > h2{
-    position: relative;
-    left: 50px;
+    text-align: center;
     margin-bottom: 10px;
-
 }
-  
 
+.opcao{
+    border: 0px; 
+    border-radius: 50px;
+    margin: 15px;
+    font-size: 17px;
+    color: #ffff;
+}
 
-#button{
+/* adicionar fila */
+
+#form{
+    padding-top: 20px;
+}
+
+.input-container{
     border: none; 
     border-radius: 50px;
     margin: 15px;
@@ -61,25 +62,25 @@ div#frame > h2{
     background-color: #D9D9D9;
     text-align: center;
     height: 40px;
-    padding: 20px 90px 40px 0 ;
 
 }
-
-
-
-.opcao{
-    border: 0px; 
-    border-radius: 50px;
-    margin: 15px;
-    font-size: 17px;
-    color: rgba(0, 0, 0, 0.5);
+span{
+    margin: 0 auto;
+    padding: 40px 0 0 50px;
+    position: absolute;
 }
 
+button{
+    background-color: #BA9A2F;
+    height: 30px;
+    width: 230px;
+    cursor:pointer;
+}
 
-buttons{
-    padding: 20px 90px 40px 0 ;
-    display: grid;
-    height: 350px;
-    width: 330px;
-    
-} 
+#btn-addfila{
+    padding-top: 50px;
+}
+
+input:focus{
+    outline: none;
+}

@@ -1,8 +1,11 @@
 export default interface Queue {
-    idQueue?: number;
+    idQueue: number;
     peopleQty: number;
     date: Date;
-    isActive: Boolean;
+    isActive: boolean;
     cpfCustomer: string;
     cpfEmployee: string;
+    customer: {
+        fullName: string;
+    }
 }

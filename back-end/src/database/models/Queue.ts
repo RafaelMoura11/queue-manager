@@ -7,7 +7,7 @@ class Queue extends Model {
   idQueue: number;
   peopleQty: number;
   date: Date;
-  comanda: string;
+  isActive: Boolean;
   cpfCustomer: string;
   cpfEmployee: string;
 }
@@ -29,9 +29,10 @@ Queue.init({
     type: DataTypes.DATE,
     allowNull: false,
   },
-  comanda: {
-    type: DataTypes.STRING,
+  isActive: {
+    type: DataTypes.BOOLEAN,
     allowNull: false,
+    field: 'is_active'
   },
   cpfCustomer: {
     type: DataTypes.STRING,

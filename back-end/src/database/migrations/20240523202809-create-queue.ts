@@ -17,9 +17,9 @@ module.exports = {
         allowNull: false,
         type: DataTypes.DATE
       },
-      comanda: {
+      is_active: {
         allowNull: false,
-        type: DataTypes.STRING
+        type: DataTypes.BOOLEAN,
       },
       cpf_customer: {
         allowNull: false,
