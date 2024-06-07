@@ -9,16 +9,16 @@ export default class Reservation {
     }
 
     static async create(req: Request, res: Response, next: NextFunction) {
-        const { peopleQty, date, cpfCustomer, cpfEmployee } = req.body;
-            await ReservationService.create({ peopleQty, date, cpfCustomer, cpfEmployee });
+        const { peopleQty, date, isActive, cpfCustomer, cpfEmployee } = req.body;
+            await ReservationService.create({ peopleQty, date, isActive, cpfCustomer, cpfEmployee });
             return res.status(201).json("Reserva adicionada com sucesso!");
     }
 
     static async update(req: Request, res: Response, next: NextFunction) {
         const { idReservation } = req.params;
-        const { peopleQty, date, cpfCustomer, cpfEmployee } = req.body;
+        const { peopleQty, date, isActive, cpfCustomer, cpfEmployee } = req.body;
         try {
-            await ReservationService.update({ idReservation: Number(idReservation), peopleQty, date, cpfCustomer, cpfEmployee });
+            await ReservationService.update({ idReservation: Number(idReservation), peopleQty, date, isActive, cpfCustomer, cpfEmployee });
             return res.status(201).json("Reserva atualizada com sucesso!");
         } catch (e) {
             return next({ status: 500, message: "Algo deu errado!" });
