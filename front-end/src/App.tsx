@@ -5,6 +5,7 @@ import QueueForm from './pages/QueueForm';
 import Queues from './pages/Queues';
 import Reservations from './pages/Reservations';
 import Login from './pages/Login';
+import ReservationForm from './pages/ReservationForm';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={ <Menu /> } />
           <Route path="/queue-form" element={ <QueueForm /> } />
           <Route path="/queues" element={ <Queues /> } />
+          <Route path="/reservation-form" element={ <ReservationForm /> } />
           <Route path="/reservations" element={ <Reservations /> } />
           <Route path="/login" element={ <Login /> } />
         </Routes>
