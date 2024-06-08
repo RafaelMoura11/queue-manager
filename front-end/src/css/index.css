@@ -148,3 +148,78 @@ ul {
     border-radius: 30px;
     cursor: pointer;
 }
+
+
+section#login{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    width: 320px;
+    height: 550px;
+}
+
+section#login > div#imagem{
+    display: block;
+    background: url("../images/adcbf8153e6c732a22e6e85cd2b14d65bb9524ce.webp") no-repeat;
+    background-size: cover;
+    height: 200px;
+}
+
+section#login > div#formulario {
+    display: block;
+    padding: 30px;
+}
+
+div#formulario > h2{
+    color:#BA9A2F;
+    margin-bottom: 5px;
+}
+
+
+div#formulario > h3{
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 15px;
+    padding-bottom: 20px ;
+}
+
+.input{
+    border: 0;
+    outline: 0;
+    border-bottom: 1px solid;
+    border-color: #BA9A2F;
+    width: 258px;
+    
+}
+
+.campo{
+    font-size: 13px;
+    padding-top: 15px;
+}
+
+.label{
+    color: rgba(0, 0, 0, 0.5);
+}
+
+#senha{
+    font-size: 10px;
+    position: relative;
+    padding: 15px 0 15px 0;
+}
+
+
+div > button[type=submit]{
+    display: block;
+    width: 90%;
+    height: 40px;
+    background-color: #BA9A2F;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+#send{
+    padding-top: 35px;
+}

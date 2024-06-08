@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import MyContext from './MyContext';
 
 type Props = {
@@ -5,8 +6,12 @@ type Props = {
 }
 
 function Provider({ children }: Props) {
+    const [token, setToken] = useState("");
 
-    const statesAndFunctions = {};
+    const statesAndFunctions = {
+        token,
+        setToken
+    };
 
     return (
         <MyContext.Provider value={ statesAndFunctions }>

@@ -4,7 +4,7 @@ import ReservationInterface from '../interfaces/Reservation';
 export default class Reservation {
     static async getAll(): Promise<ReservationInterface[]> {
         const reservations: ReservationInterface[] = await ReservationModel.findAll({
-            attributes: ['idReservation', 'peopleQty', 'date', 'cpfCustomer', 'cpfEmployee']
+            attributes: ['idReservation', 'peopleQty', 'date', 'isActive', 'cpfCustomer', 'cpfEmployee']
           });
         return reservations;
     }
@@ -18,6 +18,7 @@ export default class Reservation {
         await ReservationModel.create({
             peopleQty: newReservation.peopleQty,
             date: newReservation.date,
+            isActive: newReservation.isActive,
             cpfCustomer: newReservation.cpfCustomer,
             cpfEmployee: newReservation.cpfEmployee
         });
@@ -28,6 +29,7 @@ export default class Reservation {
         await ReservationModel.update({
             peopleQty: reservationToBeUpdated.peopleQty,
             date: reservationToBeUpdated.date,
+            isActive: reservationToBeUpdated.isActive,
             cpfCustomer: reservationToBeUpdated.cpfCustomer,
             cpfEmployee: reservationToBeUpdated.cpfEmployee
         }, { where: {
