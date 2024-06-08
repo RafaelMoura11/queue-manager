@@ -1,10 +1,20 @@
+import Customer from '../database/models/Customer';
 import ReservationModel from '../database/models/Reservation';
 import ReservationInterface from '../interfaces/Reservation';
 
 export default class Reservation {
     static async getAll(): Promise<ReservationInterface[]> {
         const reservations: ReservationInterface[] = await ReservationModel.findAll({
-            attributes: ['idReservation', 'peopleQty', 'date', 'isActive', 'cpfCustomer', 'cpfEmployee']
+            attributes: ['idReservation', 'peopleQty', 'date', 'isActive', 'cpfCustomer', 'cpfEmployee'],
+            include: [{
+                model: Customer,
+                attributes: ['fullName'],
+                as: 'customer',
+                required: false,
+              }],
+            where: {
+                isActive: true
+            }
           });
         return reservations;
     }

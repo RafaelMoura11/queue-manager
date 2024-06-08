@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import MyContext from './MyContext';
 
 type Props = {
@@ -6,7 +6,15 @@ type Props = {
 }
 
 function Provider({ children }: Props) {
-    const [token, setToken] = useState("");
+    const [token, setToken] = useState(() => localStorage.getItem('token') || '');
+
+    useEffect(() => {
+        if (token) {
+        localStorage.setItem('token', token);
+        } else {
+        localStorage.removeItem('token');
+        }
+    }, [token]);
 
     const statesAndFunctions = {
         token,
