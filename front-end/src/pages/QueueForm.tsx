@@ -1,12 +1,15 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import '../css/index.css';
 import mascatelogo from '../images/Captura de tela 2024-05-22 161444.png';
 import api from '../api';
 import ArrowBack from '../components/ArrowBack';
+import MyContext from "../context/MyContext";
+import { useNavigate } from "react-router-dom";
 
-const TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVtYWlsQGVtYWlsLmNvbSIsInBhc3N3b3JkIjoic2VuaGExMjMiLCJ1c2VyIjp7ImlkX3VzZXIiOjEsImVtYWlsIjoiZW1haWxAZW1haWwuY29tIiwiZW1wbG95ZWVfY3BmIjoiMTExMTExMTExMTEifSwiaWF0IjoxNzE3Njc2NTQ3LCJleHAiOjE3MTgyODEzNDd9.tXFPiPmYB7nYteIlQGHWCuOcO2cho7H0mm0emkxTR04";
 
 const QueueForm: React.FC = () => {
+    const { token } = useContext(MyContext);
+    const navigate = useNavigate();
     const [queueForm, setQueueForm] = useState({
         cpf: "",
         fullName: "",
@@ -22,14 +25,15 @@ const QueueForm: React.FC = () => {
 
     const submitHandler = async () => {
         try {
-            const customerExists = await api.get(`/customers/${queueForm.cpf}`, { headers: { Authorization: TOKEN } });
+            const customerExists = await api.get(`/customers/${queueForm.cpf}`, { headers: { Authorization: token } });
             if (customerExists) {
-                await api.post("/queues", { ...queueForm, peopleQty: Number(queueForm.peopleQty), cpfCustomer: queueForm.cpf, cpfEmployee: "11111111111" }, { headers: { Authorization: TOKEN } });
+                await api.post("/queues", { ...queueForm, peopleQty: Number(queueForm.peopleQty), cpfCustomer: queueForm.cpf, cpfEmployee: "11111111111" }, { headers: { Authorization: token } });
             }
         } catch (e) {
-            await api.post("/customers", { cpf: queueForm.cpf, fullName: queueForm.fullName, phone: queueForm.phone }, { headers: { Authorization: TOKEN } });
-            await api.post("/queues", { ...queueForm, peopleQty: Number(queueForm.peopleQty), cpfCustomer: queueForm.cpf, cpfEmployee: "11111111111" }, { headers: { Authorization: TOKEN } });
+            await api.post("/customers", { cpf: queueForm.cpf, fullName: queueForm.fullName, phone: queueForm.phone }, { headers: { Authorization: token } });
+            await api.post("/queues", { ...queueForm, peopleQty: Number(queueForm.peopleQty), cpfCustomer: queueForm.cpf, cpfEmployee: "11111111111" }, { headers: { Authorization: token } });
         }
+        return navigate('/');
     }
 
 

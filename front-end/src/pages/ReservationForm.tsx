@@ -4,10 +4,12 @@ import mascatelogo from '../images/Captura de tela 2024-05-22 161444.png';
 import api from '../api';
 import ArrowBack from '../components/ArrowBack';
 import MyContext from "../context/MyContext";
+import { useNavigate } from "react-router-dom";
 
 
 const ReservationForm = () => {
     const { token } = useContext(MyContext);
+    const navigate = useNavigate();
     const [reservationForm, setReservationForm] = useState({
         cpf: "",
         fullName: "",
@@ -31,6 +33,7 @@ const ReservationForm = () => {
             await api.post("/customers", { cpf: reservationForm.cpf, fullName: reservationForm.fullName, phone: reservationForm.phone }, { headers: { Authorization: token } });
             await api.post("/reservations", { ...reservationForm, peopleQty: Number(reservationForm.peopleQty), cpfCustomer: reservationForm.cpf, cpfEmployee: "11111111111" }, { headers: { Authorization: token } });
         }
+        return navigate('/');
     }
     return (
         <main>

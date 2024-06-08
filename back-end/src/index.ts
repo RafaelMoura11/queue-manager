@@ -14,7 +14,7 @@ app.use(userRoute, '/users');
 app.use(queueRoute, '/queues');
 app.use(reservationRoute, '/reservations');
 app.use(messageRoute, '/messages');
-app.use(botRouter, '/send-message')
+// app.use(botRouter, '/send-message')
 
 app.use(errorHandler);
 
