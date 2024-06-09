@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "tsc": "npx tsc",
-    "db:init": "npx sequelize-cli db:create && npx sequelize-cli db:migrate",
+    "db:init": "npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
     "db:reset": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
     "init": "node ./build/index.js",
     "start": "npm run tsc && npm run db:init && npm run init",
