@@ -10,16 +10,13 @@ import { useNavigate } from "react-router-dom";
 
 
 const Queues: React.FC = () => {
-    const { token } = useContext(MyContext);
     const navigate = useNavigate();
+    const { token } = useContext(MyContext);
     const [queues, setQueues] = useState<QueueInterface[]>([]);
     useEffect(() => {
         const fetchQueueData = async () => {
             const queuesFromAPI = await api.get<QueueInterface[]>("/queues");
             setQueues(queuesFromAPI.data);
-            if (!token) {
-                return navigate("/login");
-            }
         }
         fetchQueueData();
     }, [])
@@ -32,7 +29,9 @@ const Queues: React.FC = () => {
 
     return (
         <main>
-            <ArrowBack />
+            {
+                token && <ArrowBack />
+            }
             <section id="principal">
                 <img id="mascate" src={ mascatelogo } alt="Mascate Logo" />
                 <h2>Fila</h2>
@@ -46,15 +45,20 @@ const Queues: React.FC = () => {
                             <ul>
                                 <h4>{ queue.peopleQty }</h4>
                                 <li>{ queue.customer.fullName }</li>
-                                <img className="btn-del" src={ perto } alt="Delete Button" onClick={ () => removeQueue(queue) } />
+                                {
+                                    token && <img className="btn-del" src={ perto } alt="Delete Button" onClick={ () => removeQueue(queue) } />
+                                }
                             </ul>
                         </div>
                     ))
                 }
                 <br />
-                <div id="buttons2">
-                    <button>Adicionar mais clientes</button>
-                </div>
+                {
+                    token &&
+                    (<div id="buttons2">
+                        <button onClick={ () => navigate("/queue-form") }>Adicionar mais clientes</button>
+                    </div>)
+                }
             </section>
         </main>
     );

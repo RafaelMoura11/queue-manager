@@ -13,15 +13,15 @@ const Reservations: React.FC = () => {
     const navigate = useNavigate();
     const [reservations, setReservations] = useState<ReservationInterface[]>([]);
     useEffect(() => {
+        if (!token) {
+            return navigate("/login");
+        }
         const fetchReservationData = async () => {
             const reservationFromAPI = await api.get<ReservationInterface[]>("/reservations", { headers: { Authorization: token } });
             setReservations(reservationFromAPI.data);
-            if (!token) {
-                return navigate("/login");
-            }
         }
         fetchReservationData();
-    }, [token])
+    }, [navigate, token])
 
     const deleteReservation = async (reservationToDelete: ReservationInterface) => {
         const newReservation = reservations.filter((q) => q.idReservation !== reservationToDelete.idReservation);

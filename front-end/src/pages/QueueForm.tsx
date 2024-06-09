@@ -13,7 +13,7 @@ const QueueForm: React.FC = () => {
         if (!token) {
             return navigate("/login");
         }
-    }, [])
+    }, [navigate, token])
 
     const [queueForm, setQueueForm] = useState({
         cpf: "",

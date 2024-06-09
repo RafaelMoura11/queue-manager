@@ -11,7 +11,7 @@ const Menu: React.FC = () => {
         if (!token) {
             return navigate("/login");
         }
-    }, [token])
+    }, [navigate, token])
     return (
         <main>
             <section id="principal">

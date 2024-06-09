@@ -22,7 +22,7 @@ const ReservationForm = () => {
         if (!token) {
             return navigate("/login");
         }
-    }, [])
+    }, [navigate, token])
 
     const formHandler = (name: string, value: string) => {
         setReservationForm({ ...reservationForm, [name]: value });
