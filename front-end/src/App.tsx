@@ -6,6 +6,7 @@ import Queues from './pages/Queues';
 import Reservations from './pages/Reservations';
 import Login from './pages/Login';
 import ReservationForm from './pages/ReservationForm';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/reservation-form" element={ <ReservationForm /> } />
           <Route path="/reservations" element={ <Reservations /> } />
           <Route path="/login" element={ <Login /> } />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Provider>
     </BrowserRouter>
