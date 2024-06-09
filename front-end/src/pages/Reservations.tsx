@@ -1,6 +1,5 @@
 import { useContext, useState, useEffect } from 'react';
 import ArrowBack from '../components/ArrowBack';
-import '../css/index.css';
 import mascatelogo from '../images/Captura de tela 2024-05-22 161444.png';
 import perto from '../images/perto.png';
 import cadeira from '../images/cadeira.png';

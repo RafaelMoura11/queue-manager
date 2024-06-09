@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import './css/index.css';
 import Provider from './context/Provider';
 import Menu from './pages/Menu';
 import QueueForm from './pages/QueueForm';
