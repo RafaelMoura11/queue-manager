@@ -53,7 +53,7 @@ const Reservations: React.FC = () => {
                 }
                 <br />
                 <div id="buttons2">
-                    <button>Adicionar mais clientes</button>
+                    <button onClick={ () => navigate("/reservation-form") }>Adicionar mais clientes</button>
                 </div>
             </section>
             </main>
