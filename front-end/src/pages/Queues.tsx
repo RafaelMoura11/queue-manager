@@ -6,15 +6,20 @@ import api from '../api';
 import QueueInterface from '../interfaces/Queue';
 import ArrowBack from '../components/ArrowBack';
 import MyContext from "../context/MyContext";
+import { useNavigate } from "react-router-dom";
 
 
 const Queues: React.FC = () => {
     const { token } = useContext(MyContext);
+    const navigate = useNavigate();
     const [queues, setQueues] = useState<QueueInterface[]>([]);
     useEffect(() => {
         const fetchQueueData = async () => {
             const queuesFromAPI = await api.get<QueueInterface[]>("/queues");
             setQueues(queuesFromAPI.data);
+            if (!token) {
+                return navigate("/login");
+            }
         }
         fetchQueueData();
     }, [])

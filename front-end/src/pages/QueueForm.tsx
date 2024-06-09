@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import mascatelogo from '../images/Captura de tela 2024-05-22 161444.png';
 import api from '../api';
 import ArrowBack from '../components/ArrowBack';
@@ -9,6 +9,12 @@ import { useNavigate } from "react-router-dom";
 const QueueForm: React.FC = () => {
     const { token } = useContext(MyContext);
     const navigate = useNavigate();
+    useEffect(() => {
+        if (!token) {
+            return navigate("/login");
+        }
+    }, [])
+
     const [queueForm, setQueueForm] = useState({
         cpf: "",
         fullName: "",

@@ -1,7 +1,17 @@
-import { Link } from 'react-router-dom';
+import { useContext, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import MyContext from "../context/MyContext";
 import mascatelogo from '../images/Captura de tela 2024-05-22 161444.png';
 
 const Menu: React.FC = () => {
+    const { token } = useContext(MyContext);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!token) {
+            return navigate("/login");
+        }
+    }, [token])
     return (
         <main>
             <section id="principal">

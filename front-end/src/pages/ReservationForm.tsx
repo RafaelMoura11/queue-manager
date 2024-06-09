@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import mascatelogo from '../images/Captura de tela 2024-05-22 161444.png';
 import api from '../api';
 import ArrowBack from '../components/ArrowBack';
@@ -17,6 +17,12 @@ const ReservationForm = () => {
         peopleQty: "0",
         phone: ""
     });
+    
+    useEffect(() => {
+        if (!token) {
+            return navigate("/login");
+        }
+    }, [])
 
     const formHandler = (name: string, value: string) => {
         setReservationForm({ ...reservationForm, [name]: value });

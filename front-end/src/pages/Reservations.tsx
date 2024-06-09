@@ -6,14 +6,19 @@ import cadeira from '../images/cadeira.png';
 import MyContext from "../context/MyContext";
 import api from '../api';
 import ReservationInterface from '../interfaces/Reservation';
+import { useNavigate } from "react-router-dom";
 
 const Reservations: React.FC = () => {
     const { token } = useContext(MyContext);
+    const navigate = useNavigate();
     const [reservations, setReservations] = useState<ReservationInterface[]>([]);
     useEffect(() => {
         const fetchReservationData = async () => {
             const reservationFromAPI = await api.get<ReservationInterface[]>("/reservations", { headers: { Authorization: token } });
             setReservations(reservationFromAPI.data);
+            if (!token) {
+                return navigate("/login");
+            }
         }
         fetchReservationData();
     }, [token])
