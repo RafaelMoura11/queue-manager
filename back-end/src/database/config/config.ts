@@ -4,7 +4,7 @@ const config: Options = {
   username: 'root',
   password: 'root',
   database: 'mascate',
-  host: 'localhost',
+  host: 'db',
   port: 3306,
   dialect: 'mysql',
   dialectOptions: {
