@@ -1,4 +1,4 @@
-const venom = require('venom-bot');
+// const venom = require('venom-bot');
 import { Request, Response, NextFunction } from 'express';
 
 
@@ -21,11 +21,6 @@ class Bot {
         return res.status(400).json({ error: 'Campo "mensagem" vazio' });
       }
   
-      const client = await venom.create({
-        session: 'mascate',
-      });
-      
-      await client.sendText('5581997720800' + '@c.us', message)
       return res.status(200).json("Mensagem enviada!");
     } catch (e) {
       return next({ status: 500, message: e });
