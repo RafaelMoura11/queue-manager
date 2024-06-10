@@ -4,6 +4,7 @@ import api from '../api';
 import ArrowBack from '../components/ArrowBack';
 import MyContext from "../context/MyContext";
 import { useNavigate } from "react-router-dom";
+import parseDate from '../utils/dateFormat';
 
 
 const ReservationForm = () => {
@@ -13,7 +14,8 @@ const ReservationForm = () => {
         cpf: "",
         fullName: "",
         isActive: true,
-        date: new Date(),
+        date: "",
+        hour: "",
         peopleQty: "0",
         phone: ""
     });
@@ -32,11 +34,11 @@ const ReservationForm = () => {
         try {
             const customerExists = await api.get(`/customers/${reservationForm.cpf}`, { headers: { Authorization: token } });
             if (customerExists) {
-                await api.post("/reservations", { ...reservationForm, peopleQty: Number(reservationForm.peopleQty), cpfCustomer: reservationForm.cpf, cpfEmployee: "11111111111" }, { headers: { Authorization: token } });
+                await api.post("/reservations", { ...reservationForm, peopleQty: Number(reservationForm.peopleQty), date: parseDate(`${reservationForm.date} ${reservationForm.hour}:00:00`), cpfCustomer: reservationForm.cpf, cpfEmployee: "11111111111" }, { headers: { Authorization: token } });
             }
         } catch (e) {
             await api.post("/customers", { cpf: reservationForm.cpf, fullName: reservationForm.fullName, phone: reservationForm.phone }, { headers: { Authorization: token } });
-            await api.post("/reservations", { ...reservationForm, peopleQty: Number(reservationForm.peopleQty), cpfCustomer: reservationForm.cpf, cpfEmployee: "11111111111" }, { headers: { Authorization: token } });
+            await api.post("/reservations", { ...reservationForm, peopleQty: Number(reservationForm.peopleQty), date: parseDate(`${reservationForm.date} ${reservationForm.hour}:00:00`), cpfCustomer: reservationForm.cpf, cpfEmployee: "11111111111" }, { headers: { Authorization: token } });
         }
         return navigate('/');
     }
@@ -63,6 +65,14 @@ const ReservationForm = () => {
                         <div>
                             <label htmlFor="phone" className="label"></label>
                             <input type="tel" className="input-container" name="phone" maxLength={ 10 } placeholder="Telefone" onChange={ ({ target: { name, value } }) => formHandler(name, value) }/>
+                        </div>
+                        <div>
+                            <label htmlFor="date" className="label"></label>
+                            <input type="text" className="input-container" name="date" maxLength={ 10 } placeholder="Data" onChange={ ({ target: { name, value } }) => formHandler(name, value) }/>
+                        </div>
+                        <div>
+                            <label htmlFor="hour" className="label"></label>
+                            <input type="number" className="input-container" name="hour" maxLength={ 2 } placeholder="Horário" onChange={ ({ target: { name, value } }) => formHandler(name, value) }/>
                         </div>
                     </div>
                 </div>  

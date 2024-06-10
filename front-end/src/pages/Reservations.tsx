@@ -29,31 +29,57 @@ const Reservations: React.FC = () => {
         return setReservations(newReservation);
     }
 
+    const formatDate = (dateString: string): string => {
+        const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+        return new Date(dateString).toLocaleDateString('pt-BR', options);
+    };
+
+    // Ordenar reservas por data mais recente
+    const sortedReservations = [...reservations].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).reverse();
+
+    // Agrupar reservas por data
+    const groupedReservations = sortedReservations.reduce<Record<string, ReservationInterface[]>>((groups, reservation: ReservationInterface) => {
+        const date = formatDate(String(reservation.date));
+        if (!groups[date]) {
+            groups[date] = [];
+        }
+        groups[date].push(reservation);
+        return groups;
+    }, {});
+
     return (
         <div>
             <main> 
                 <ArrowBack />
                 <section id="principal">
                 <img id="mascate" src={ mascatelogo } alt="Mascate Logo" />
-                <h2>Fila</h2>
+                <h2>Reservas</h2>
                 <div id="head">
                     <img src={ cadeira } alt="Cadeira" />
                     <h4>Nome</h4>
                 </div>
-                {
-                    reservations.map((reservation) => (
-                        <div className="lista" key={ reservation.idReservation }>
+                {Object.keys(groupedReservations).map((date) => (
+                <div key={date}>
+                    <h1>{date}</h1>
+                    {groupedReservations[date].map((reservation) => (
+                        <div className="lista" key={reservation.idReservation}>
                             <ul>
-                                <h4>{ reservation.peopleQty }</h4>
-                                <li>{ reservation.customer.fullName }</li>
-                                <img className="btn-del" src={ perto } alt="Delete Button" onClick={ () => deleteReservation(reservation) } />
+                                <h4>{reservation.peopleQty}</h4>
+                                <li>{reservation.customer.fullName}</li>
+                                <img
+                                    className="btn-del"
+                                    src={ perto }
+                                    alt="Delete Button"
+                                    onClick={() => deleteReservation(reservation)}
+                                />
                             </ul>
                         </div>
-                    ))
-                }
+                    ))}
+                </div>
+            ))}
                 <br />
                 <div id="buttons2">
-                    <button onClick={ () => navigate("/reservation-form") }>Adicionar mais clientes</button>
+                    <button onClick={ () => navigate("/reservation-form") }>Adicionar mais reservas</button>
                 </div>
             </section>
             </main>
