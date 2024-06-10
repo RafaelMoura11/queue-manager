@@ -1,5 +1,5 @@
 const venom = require('venom-bot');
-import { Request, Response } from 'express';
+import { Request, Response, NextFunction } from 'express';
 
 
 interface MessageRequest {
@@ -7,33 +7,31 @@ interface MessageRequest {
   message: string;
 }
 
-const post = async (req: Request<MessageRequest>, res: Response) => {
+class Bot {
+
+  static async post(req: Request, res: Response, next: NextFunction) {
+    const { message = 'Senhor(a) Massuello, dirija-se a recepção!'} = req.body as MessageRequest;
+    try {
   
-  try {
-    const { to, message = 'Senhor(a) Massuello, dirija-se a recepção!'} = req.body;
-
-    if (!to) {
-      return res.status(400).json({ error: 'Campo ""numero" vazio' });
-    }
-
-    if (!message) {
-      return res.status(400).json({ error: 'Campo "mensagem" vazio' });
-    }
-
-    const client = await venom.create({
-      session: 'mascate',
-    });
-    
-    await client.sendText('5581981873605' + '@c.us', message)
-      .then(() => res.status(201).json({ message: 'Mensagem enviada' }))
-      .catch((error: any) => {
-        console.error('Error ao enviar a mensagem:', error);
-        res.status(500).json({ error: 'error ao enviar a mensagem' });
+      // if (!to) {
+      //   return res.status(400).json({ error: 'Campo ""numero" vazio' });
+      // }
+  
+      if (!message) {
+        return res.status(400).json({ error: 'Campo "mensagem" vazio' });
+      }
+  
+      const client = await venom.create({
+        session: 'mascate',
       });
-  } catch (error) {
-    console.error('Erro inesperado:', error);
-    res.status(500).json({ error: 'Erro interno de servidor' }); 
-  } 
-};
+      
+      await client.sendText('5581997720800' + '@c.us', message)
+      return res.status(200).json("Mensagem enviada!");
+    } catch (e) {
+      return next({ status: 500, message: e });
+    } 
+  };
 
-module.exports = post;
+}
+
+export default Bot;
