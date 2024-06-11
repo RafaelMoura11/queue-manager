@@ -52,7 +52,7 @@ const QueueForm: React.FC = () => {
                     <div id="form">
                         <div>
                             <label htmlFor="cpf" className="label"></label>
-                            <input type="text" className="input-container" name="cpf" placeholder="CPF Cliente" onChange={ ({ target: { name, value } }) => formHandler(name, value) }/>
+                            <input type="text" className="input-container" name="cpf" maxLength={ 11 } placeholder="CPF Cliente" onChange={ ({ target: { name, value } }) => formHandler(name, value) }/>
                         </div>
                         <div>
                             <label htmlFor="fullName" className="label"></label>
@@ -64,7 +64,7 @@ const QueueForm: React.FC = () => {
                         </div>
                         <div>
                             <label htmlFor="phone" className="label"></label>
-                            <input type="tel" className="input-container" name="phone" maxLength={ 10 } placeholder="Telefone" onChange={ ({ target: { name, value } }) => formHandler(name, value) }/>
+                            <input type="tel" className="input-container" name="phone" maxLength={ 11 } placeholder="Telefone" onChange={ ({ target: { name, value } }) => formHandler(name, value) }/>
                         </div>
                     </div>
                 </div> 
