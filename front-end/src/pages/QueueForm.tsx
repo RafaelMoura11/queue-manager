@@ -43,38 +43,36 @@ const QueueForm: React.FC = () => {
 
 
     return (
-        <div>
+        <main>
             <ArrowBack />
-            <main>
-                <section id="principal">
-                    <img src={ mascatelogo } alt="" />
-                    <div id="frame">
-                        <h2>Adicionar Fila</h2>
-                        <div id="form">
-                            <div>
-                                <label htmlFor="cpf" className="label"></label>
-                                <input type="text" className="input-container" name="cpf" placeholder="CPF Cliente" onChange={ ({ target: { name, value } }) => formHandler(name, value) }/>
-                            </div>
-                            <div>
-                                <label htmlFor="fullName" className="label"></label>
-                                <input type="text" className="input-container" name="fullName" placeholder="Nome Cliente" onChange={ ({ target: { name, value } }) => formHandler(name, value) }/>
-                            </div>
-                            <div>
-                                <label htmlFor="peopleQty" className="label"></label>
-                                <input type="number" className="input-container" name="peopleQty" placeholder="Numero de pessoas" onChange={ ({ target: { name, value } }) => formHandler(name, value) }/>
-                            </div>
-                            <div>
-                                <label htmlFor="phone" className="label"></label>
-                                <input type="tel" className="input-container" name="phone" maxLength={ 10 } placeholder="Telefone" onChange={ ({ target: { name, value } }) => formHandler(name, value) }/>
-                            </div>
+            <section id="principal">
+                <img src={ mascatelogo } alt="" />
+                <div id="frame">
+                    <h2>Adicionar Fila</h2>
+                    <div id="form">
+                        <div>
+                            <label htmlFor="cpf" className="label"></label>
+                            <input type="text" className="input-container" name="cpf" placeholder="CPF Cliente" onChange={ ({ target: { name, value } }) => formHandler(name, value) }/>
                         </div>
-                    </div> 
-                    <div id="btn-addfila">
-                        <button className="opcao" onClick={ submitHandler }>Adicionar a fila</button>
+                        <div>
+                            <label htmlFor="fullName" className="label"></label>
+                            <input type="text" className="input-container" name="fullName" placeholder="Nome Cliente" onChange={ ({ target: { name, value } }) => formHandler(name, value) }/>
+                        </div>
+                        <div>
+                            <label htmlFor="peopleQty" className="label"></label>
+                            <input type="number" className="input-container" name="peopleQty" placeholder="Numero de pessoas" onChange={ ({ target: { name, value } }) => formHandler(name, value) }/>
+                        </div>
+                        <div>
+                            <label htmlFor="phone" className="label"></label>
+                            <input type="tel" className="input-container" name="phone" maxLength={ 10 } placeholder="Telefone" onChange={ ({ target: { name, value } }) => formHandler(name, value) }/>
+                        </div>
                     </div>
-                </section>  
-            </main>
-        </div>
+                </div> 
+                <div id="btn-addfila">
+                    <button className="opcao" onClick={ submitHandler }>Adicionar a fila</button>
+                </div>
+            </section>  
+        </main>
     )
 }
 

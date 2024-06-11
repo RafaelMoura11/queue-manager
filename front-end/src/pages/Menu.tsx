@@ -19,10 +19,10 @@ const Menu: React.FC = () => {
                 <div id="frame">
                     <h2>O que deseja fazer?</h2>
                     <div id="buttons">    
-                        <button className="opcao"><Link to="/queue-form">Adicionar Fila</Link></button>
-                        <button className="opcao"><Link to="/queues">Fila</Link></button>
-                        <button className="opcao"><Link to="/reservation-form">Adicionar Reservas</Link></button>
-                        <button className="opcao"><Link to="/reservations">Reservas</Link></button>
+                    <Link to="/queue-form"><button className="opcao">Adicionar Fila</button></Link>
+                    <Link to="/queues"><button className="opcao">Fila</button></Link>
+                    <Link to="/reservation-form"><button className="opcao">Adicionar Reservas</button></Link>
+                    <Link to="/reservations"><button className="opcao">Reservas</button></Link>
                     </div> 
                 </div>
             </section>  

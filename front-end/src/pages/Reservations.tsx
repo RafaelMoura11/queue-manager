@@ -60,7 +60,7 @@ const Reservations: React.FC = () => {
                 </div>
                 {Object.keys(groupedReservations).map((date) => (
                 <div key={date}>
-                    <h1>{date}</h1>
+                    <h1 className="date-time">{date}</h1>
                     {groupedReservations[date].map((reservation) => (
                         <div className="lista" key={reservation.idReservation}>
                             <ul>
