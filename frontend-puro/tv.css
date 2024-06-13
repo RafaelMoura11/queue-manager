@@ -7,7 +7,6 @@
 
 body, html{
     background-color: #ffff;
-    
     width: 100vw;
 }
 
@@ -21,7 +20,6 @@ aside#principal {
     position: absolute;
     left:80%;
     bottom:-120px;
-    
     transform: translate(-50%,-50%);
     width: 250px;
     height: 500px;
@@ -50,12 +48,11 @@ aside#principal > div#frame {
 ul{
     list-style-type: none;
     padding-left: 0;
-    text-align: center;
+    text-align: center;   
 }
 
 .lista > ul {
     display: flex;
-    
 }
 
 .lista {
@@ -63,10 +60,9 @@ ul{
 }
 
 li {
-    margin-left: 50px;
-    
-}
-
+    margin-left: 50px;   
+ }
+ 
 .slide {
     display: flex;
     position: relative;
