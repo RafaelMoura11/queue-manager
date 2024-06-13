@@ -1,6 +1,4 @@
 import * as express from 'express';
-import { Session } from 'inspector';
-import { start } from 'repl';
 
 export default class App {
   public app: express.Express;
@@ -11,7 +9,7 @@ export default class App {
     this.config();
   }
 
-  private config():void {
+  private config(): void {
     const accessControl: express.RequestHandler = (_req, res, next) => {
       res.header('Access-Control-Allow-Origin', '*');
       res.header('Access-Control-Allow-Methods', 'GET,POST,DELETE,OPTIONS,PUT,PATCH');
@@ -22,8 +20,10 @@ export default class App {
     this.app.use(accessControl);
   }
 
-  public start(PORT: string | number):void {
-    this.app.listen(PORT);
+  public start(PORT: string | number): void {
+    this.app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+    });
   }
 
   public use(route: express.Router | express.ErrorRequestHandler, routeName?: string): void {
@@ -33,5 +33,8 @@ export default class App {
       this.app.use(route);
     }
   }
-}
 
+  public post(route: string, handler: express.RequestHandler): void {
+    this.app.post(route, handler);
+  }
+}

@@ -1,23 +1,24 @@
 {
-    "compilerOptions": {
-      "target": "es2019",
-      "module": "commonjs",
-      "sourceMap": true,                     
-      "outDir": "./build",
-      "rootDir": "./src",
-      "strict": true,
-      "moduleResolution": "node",
-      "baseUrl": "./",
-      "paths": {
-        "@config/*": ["src/database/config/*"]
-      },
-      "forceConsistentCasingInFileNames": true,
-      "resolveJsonModule": true,
-      "experimentalDecorators": true,
-      "emitDecoratorMetadata": true,
-      "strictPropertyInitialization": false,
-      "skipLibCheck": true,
+  "compilerOptions": {
+    "target": "es2019",
+    "module": "commonjs",
+    "sourceMap": true,
+    "outDir": "./build",
+    "rootDir": "./src",
+    "strict": true,
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "paths": {
+      "@config/*": ["src/database/config/*"]
     },
-    "include": ["src/**/*"],
-    "exclude": ["node_modules", "build"]
-  }
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "strictPropertyInitialization": false,
+    "skipLibCheck": true,
+    "allowJs": true        // Adiciona esta linha
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "build"]
+}
