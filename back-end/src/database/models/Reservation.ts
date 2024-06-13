@@ -1,14 +1,14 @@
 import { Model, DataTypes } from 'sequelize';
 import sequelize from './';
-import Customer from './Customer';
 import Employee from './Employee';
 
 class Reservation extends Model {
   idReservation: number;
+  nickname: string;
+  phone: string;
   peopleQty: number;
   date: Date;
   isActive: Boolean;
-  cpfCustomer: string;
   cpfEmployee: string;
 }
 
@@ -19,6 +19,14 @@ Reservation.init({
     autoIncrement: true,
     primaryKey: true,
     field: 'id_reservation'
+  },
+  nickname: {
+    allowNull: false,
+    type: DataTypes.STRING
+  },
+  phone: {
+    allowNull: false,
+    type: DataTypes.STRING
   },
   peopleQty: {
     type: DataTypes.INTEGER,
@@ -33,17 +41,6 @@ Reservation.init({
     type: DataTypes.BOOLEAN,
     allowNull: false,
     field: 'is_active'
-  },
-  cpfCustomer: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    field: 'cpf_customer',
-    references: {
-      model: Customer,
-      key: 'cpf',
-    },
-    onUpdate: 'CASCADE',
-    onDelete: 'CASCADE',
   },
   cpfEmployee: {
     type: DataTypes.STRING,
@@ -64,22 +61,10 @@ Reservation.init({
   modelName: 'Reservation',
 });
 
-Reservation.belongsTo(Customer, {
-  foreignKey: 'cpf_customer',
-  targetKey: 'cpf',
-  as: 'customer',
-});
-
 Reservation.belongsTo(Employee, {
   foreignKey: 'cpf_employee',
   targetKey: 'cpf',
   as: 'employee',
-});
-
-Customer.hasMany(Reservation, {
-  foreignKey: 'cpf_customer',
-  sourceKey: 'cpf',
-  as: 'reservations',
 });
 
 Employee.hasMany(Reservation, {
