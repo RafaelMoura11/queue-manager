@@ -43,15 +43,7 @@ section#principal > div#frame {
 
 #head{
     display: flex;
-}
-
-#head img{
-    width: 40px;
-}
-
-#head > h4 {
-    margin-left:  60px;
-    
+    margin-left:  103px;
 }
 
 ul{
@@ -62,33 +54,15 @@ ul{
 
 .lista > ul {
     display: flex;
-    justify-content: space-between;
+    
 }
 
-.lista{
+.lista {
     padding: 15px;
 }
 
-.btn-del{
-    width: 26px;
-    flex-shrink: 0;
-    cursor: pointer;
+li {
+    margin-left: 50px;
+    
 }
 
-span{
-    margin: 0 auto;
-    padding: 40px 0 0 50px;
-    position: absolute;
-}
-
-#buttons2 > button{
-    display: block;
-    margin-left: 10px;
-    width: 90%;
-    height: 40px;
-    background-color: #BA9A2F;
-    color: white;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-}

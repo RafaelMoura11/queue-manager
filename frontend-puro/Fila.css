@@ -43,14 +43,16 @@ section#principal > div#frame {
 
 #head{
     display: flex;
+    justify-content: space-between;
 }
 
 #head img{
     width: 40px;
+
 }
 
 #head > h4 {
-    margin-left:  60px;
+    margin-left:  102px;
     
 }
 
