@@ -23,7 +23,7 @@ venom
 const start = (client) => {
   app.post('/send-message', async (req, res) => {
     const { message } = req.body;
-    await client.sendText('5581986884763@c.us', message);
+    await client.sendText('5581997333517@c.us', message);
     return res.status(201).json('Mensagem enviada');
   });
 };
