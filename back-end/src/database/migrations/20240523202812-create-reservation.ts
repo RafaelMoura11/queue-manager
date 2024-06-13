@@ -9,6 +9,14 @@ module.exports = {
         primaryKey: true,
         type: DataTypes.INTEGER
       },
+      nickname: {
+        allowNull: false,
+        type: DataTypes.STRING
+      },
+      phone: {
+        allowNull: false,
+        type: DataTypes.STRING
+      },
       people_qty: {
         allowNull: false,
         type: DataTypes.INTEGER
@@ -20,14 +28,6 @@ module.exports = {
       is_active: {
         allowNull: false,
         type: DataTypes.BOOLEAN,
-      },
-      cpf_customer: {
-        allowNull: false,
-        type: DataTypes.STRING,
-        references: {
-          model: 'Customers',
-          key: 'cpf'
-        }
       },
       cpf_employee: {
         allowNull: false,
