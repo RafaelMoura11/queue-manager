@@ -7,42 +7,127 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kavoon&display=swap" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <script scr="https://kit.fontawesome.com/ca14b9e588.js" crossorigin="anonymous"></script>
     <title>Mascate</title>
 </head>
 <body>
-    <main>
-        <section id="principal">
-                <img id="mascate" src="imagens/Captura de tela 2024-05-22 161444.png">
-                <h2>Fila</h2>
-            <div id="head">
-                <h4>Nome</h4>
+   <section id="sec">
+        <div class="slide">
+            <div class="slides">
+              <div id="voltar" class="btn">
+                <i class="fas fa-chevron-left"></i>
+              </div>
+              <div id="next" class="btn">
+                <i class="fas fa-chevron-right"></i>
+              </div>
+        
+              <div id="atual" class="image">
+                <img src="./imagens/DSC_0009.jpg" alt="" />
+              </div>
+        
+              <div class="image">
+                <img src="./imagens/feijoada_almendra_aloalobahia.jpg" alt="" />
+              </div>
+        
+              <div class="image">
+                <img src="./imagens/buffet-sobremesas.jpg" alt="" />
+              </div>
+        
             </div>
-            <div class="lista">
-                <ul>
-                    <h4>1</h4>
-                    <li>André Luiz</li>
-                </ul>
-            </div>
-            <div class="lista">
-                <ul>
-                    <h4>2</h4>
-                    <li>Massuello Quaresma</li>
-                </ul>
-            </div>
-            <div class="lista">
-                <ul>
-                    <h4>3</h4>
-                    <li>Gabriel Vieira</li>
-                </ul>
-            </div>
-            <div class="lista">
-                <ul>
-                    <h4>4</h4>
-                    <li>Rafael Moura</li>
-                </ul>
-            </div>
-            <br>
-            
-        </section>
-    </main>
+            <div class="balls"></div>
+        </div>
+    </section>    
+             <aside id="principal">
+                    <img id="mascate" src="imagens/Captura de tela 2024-05-22 161444.png">
+                    <h2>Fila</h2>
+                <div id="head">
+                    <h4>Nome</h4>
+                </div>
+                <div class="lista">
+                    <ul>
+                        <h4>1</h4>
+                        <li>André Luiz</li>
+                    </ul>
+                </div>
+                <div class="lista">
+                    <ul>
+                        <h4>2</h4>
+                        <li>Massuello Quaresma</li>
+                    </ul>
+                </div>
+                <div class="lista">
+                    <ul>
+                        <h4>3</h4>
+                        <li>Gabriel Vieira</li>
+                    </ul>
+                </div>
+                <div class="lista">
+                    <ul>
+                        <h4>4</h4>
+                        <li>Rafael Moura</li>
+                    </ul>
+                </div>
+                <br>
+                
+            </aside>
+   
+    <script>
+        var balls = document.querySelector(".balls");
+        var quant = document.querySelectorAll(".slides .image");
+        var atual = 0;
+        var imagem = document.getElementById("atual");
+        var next = document.getElementById("next");
+        var voltar = document.getElementById("voltar");
+        for (let i = 0; i < quant.length; i++) {
+          var div = document.createElement("div");
+          div.id = i;
+          balls.appendChild(div);
+        }
+        document.getElementById("0").classList.add("imgAtual");
+        var pos = document.querySelectorAll(".balls div");
+        for (let i = 0; i < pos.length; i++) {
+          pos[i].addEventListener("click", () => {
+            atual = pos[i].id;
+            slide();
+          });
+        }
+        voltar.addEventListener("click", () => {
+          atual--;
+          slide();
+        });
+        next.addEventListener("click", () => {
+          atual++;
+          slide();
+        });
+    
+        function slide() {
+          if (atual >= quant.length) {
+            atual = 0;
+          } else if (atual < 0) {
+            atual = quant.length - 1;
+          }
+          document.querySelector(".imgAtual").classList.remove("imgAtual");
+          imagem.style.marginLeft = -1024 * atual + "px";
+          document.getElementById(atual).classList.add("imgAtual");
+        }
+        // Definir a quantidade de tempo entre cada transição de slide
+        const tempoTransicao = 5000;
+        // Função para avançar o slide
+        function avancarSlide() {
+          atual++;
+          slide();
+        }
+        // Iniciar o intervalo de tempo para a transição de slides
+        let intervalo = setInterval(avancarSlide, tempoTransicao);
+        // Parar o intervalo de tempo quando o mouse passar sobre o carrossel
+        document.querySelector(".slide").addEventListener("mouseover", () => {
+          clearInterval(intervalo);
+        });
+        // Continuar o intervalo de tempo quando o mouse sair do carrossel
+        document.querySelector(".slide").addEventListener("mouseout", () => {
+          intervalo = setInterval(avancarSlide, tempoTransicao);
+        });
+      </script>    
+    </html>
 </body>
