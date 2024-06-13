@@ -9,9 +9,9 @@ export default class Queue {
     }
 
     static async create(req: Request, res: Response, next: NextFunction) {
-        const { peopleQty, date, isActive, cpfCustomer, cpfEmployee } = req.body;
+        const { nickname, phone, peopleQty, date, isActive, cpfEmployee } = req.body;
         try {
-            await QueueService.create({ peopleQty, date, isActive, cpfCustomer, cpfEmployee });
+            await QueueService.create({ nickname, phone, peopleQty, date, isActive, cpfEmployee });
             return res.status(201).json("Fila adicionada com sucesso!");
         } catch (e) {
             return next({ status: 500, message: e});
@@ -20,10 +20,10 @@ export default class Queue {
 
     static async update(req: Request, res: Response, next: NextFunction) {
         const { idQueue } = req.params;
-        const { peopleQty, date, isActive, cpfCustomer, cpfEmployee } = req.body;
+        const { nickname, phone, peopleQty, date, isActive, cpfEmployee } = req.body;
         try {
-            await QueueService.update({ idQueue: Number(idQueue), peopleQty, date, isActive, cpfCustomer, cpfEmployee });
-            return res.status(201).json({ idQueue: Number(idQueue), peopleQty, date, isActive, cpfCustomer, cpfEmployee });
+            await QueueService.update({ idQueue: Number(idQueue), nickname, phone, peopleQty, date, isActive, cpfEmployee });
+            return res.status(201).json({ idQueue: Number(idQueue), nickname, phone, peopleQty, date, isActive, cpfEmployee });
         } catch (e) {
             return next({ status: 500, message: "Algo deu errado!" });
         }

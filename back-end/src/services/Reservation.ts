@@ -1,17 +1,10 @@
-import Customer from '../database/models/Customer';
 import ReservationModel from '../database/models/Reservation';
 import ReservationInterface from '../interfaces/Reservation';
 
 export default class Reservation {
     static async getAll(): Promise<ReservationInterface[]> {
         const reservations: ReservationInterface[] = await ReservationModel.findAll({
-            attributes: ['idReservation', 'peopleQty', 'date', 'isActive', 'cpfCustomer', 'cpfEmployee'],
-            include: [{
-                model: Customer,
-                attributes: ['fullName'],
-                as: 'customer',
-                required: false,
-              }],
+            attributes: ['idReservation', 'peopleQty', 'date', 'isActive', 'cpfEmployee'],
             where: {
                 isActive: true
             }
@@ -26,10 +19,11 @@ export default class Reservation {
 
     static async create(newReservation: ReservationInterface) {
         await ReservationModel.create({
+            nickname: newReservation.nickname,
+            phone: newReservation.phone,
             peopleQty: newReservation.peopleQty,
             date: newReservation.date,
             isActive: newReservation.isActive,
-            cpfCustomer: newReservation.cpfCustomer,
             cpfEmployee: newReservation.cpfEmployee
         });
         return true;
@@ -37,10 +31,11 @@ export default class Reservation {
 
     static async update(reservationToBeUpdated: ReservationInterface) {
         await ReservationModel.update({
+            nickname: reservationToBeUpdated.nickname,
+            phone: reservationToBeUpdated.phone,
             peopleQty: reservationToBeUpdated.peopleQty,
             date: reservationToBeUpdated.date,
             isActive: reservationToBeUpdated.isActive,
-            cpfCustomer: reservationToBeUpdated.cpfCustomer,
             cpfEmployee: reservationToBeUpdated.cpfEmployee
         }, { where: {
             id_reservation: reservationToBeUpdated.idReservation
