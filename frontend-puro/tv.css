@@ -11,11 +11,6 @@ body, html{
     width: 100vw;
 }
 
-main{
-    
-    width: 100vw;
-    position: relative;
-}
 section#sec{
 display: flex;
 position:relative;
