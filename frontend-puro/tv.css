@@ -7,20 +7,19 @@
 
 body, html{
     background-color: #ffff;
-    height: 100vh;
     width: 100vw;
 }
 
-main{
-    height: 100vh;
-    width: 100vw;
-    position: relative;
-}
+section#sec{
+display: flex;
+position:relative;
+top: 100px;
 
-section#principal {
+}
+aside#principal {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    left:80%;
+    bottom:-120px;
     transform: translate(-50%,-50%);
     width: 250px;
     height: 500px;
@@ -31,7 +30,7 @@ section#principal {
     width: 270px;
 }
 
-section#principal > div#frame {
+aside#principal > div#frame {
     display: block;
     padding: 10px;
 }
@@ -49,12 +48,11 @@ section#principal > div#frame {
 ul{
     list-style-type: none;
     padding-left: 0;
-    text-align: center;
+    text-align: center;   
 }
 
 .lista > ul {
     display: flex;
-    
 }
 
 .lista {
@@ -62,7 +60,52 @@ ul{
 }
 
 li {
-    margin-left: 50px;
+    margin-left: 50px;   
+ }
+ 
+.slide {
+    display: flex;
+    position: relative;
+    top: 10%;
+    margin-left: 2%;
+    width: 900px;
+    height: 576px;
+    overflow: hidden;
+    border-radius: 15px;
+    transition: all 0.4s;
+  }
+  
+  .slides {
     
-}
-
+    width: 5120px;
+    display: flex;
+  }
+  
+  .image img {
+    width: 1024px;
+    height: 576px;
+  }
+  
+  #atual {
+    transition: all 2s;
+  }
+   
+  #voltar {
+    top: 50%;
+    left: 10%;
+  }
+  
+  #next {
+    top: 50%;
+    right: 10%;
+  }
+  
+  .balls div {
+    transition: all 0.5s;
+    padding: 6px;
+    border-radius: 50%;
+    margin-right: 15px;
+    cursor: pointer;
+  }
+  
+  
