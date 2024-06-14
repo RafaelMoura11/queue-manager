@@ -20,6 +20,7 @@ const Queues: React.FC = () => {
     const removeQueue = async (queueToRemove: QueueInterface) => {
         const newQueue = queues.filter((q) => q.idQueue !== queueToRemove.idQueue);
         await api.put(`/queues/${queueToRemove.idQueue}`, { ...queueToRemove, isActive: false }, { headers: { Authorization: token } });
+        await api.post(`send-message/55${queueToRemove.phone}`, { message: "Chegou tua hora rapa" })
         return setQueues(newQueue);
     }
 

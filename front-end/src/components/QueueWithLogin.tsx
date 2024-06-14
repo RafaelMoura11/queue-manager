@@ -22,16 +22,16 @@ const QueueWithLogin = ({ queues, removeQueue }: Props) => {
                     <img src={ cadeiradobravel } alt="Cadeira Dobravel" />
                 </div>
                 <div id="head">
-                    <h4>Posição</h4>
+                    <h4>Remover</h4>
                     <h4>Nome</h4>
                     <h4>Cadeiras</h4>
                 </div>
                 {
                     queues.map((queue) => (
                         <div className="lista" key={ queue.idQueue }>
-                            <h4>{ queue.peopleQty }</h4>
-                            <h4>{ queue.nickname }</h4>
                             <img className="btn-del" src={ perto } alt="Delete Button" onClick={ () => removeQueue(queue) } />
+                            <h4>{ queue.nickname }</h4>
+                            <h4>{ queue.peopleQty }</h4>
                         </div>
                     ))
                 }

@@ -16,12 +16,11 @@ const QueueForm: React.FC = () => {
     }, [navigate, token])
 
     const [queueForm, setQueueForm] = useState({
-        cpf: "",
-        fullName: "",
+        nickname: "",
+        phone: "",
         isActive: true,
         date: new Date(),
-        peopleQty: "0",
-        phone: ""
+        peopleQty: "0"
     });
     
     const formHandler = (name: string, value: string) => {
@@ -30,13 +29,9 @@ const QueueForm: React.FC = () => {
 
     const submitHandler = async () => {
         try {
-            const customerExists = await api.get(`/customers/${queueForm.cpf}`, { headers: { Authorization: token } });
-            if (customerExists) {
-                await api.post("/queues", { ...queueForm, peopleQty: Number(queueForm.peopleQty), cpfCustomer: queueForm.cpf, cpfEmployee: "11111111111" }, { headers: { Authorization: token } });
-            }
+            await api.post("/queues", { ...queueForm, peopleQty: Number(queueForm.peopleQty), cpfEmployee: "11111111111" }, { headers: { Authorization: token } });
         } catch (e) {
-            await api.post("/customers", { cpf: queueForm.cpf, fullName: queueForm.fullName, phone: queueForm.phone }, { headers: { Authorization: token } });
-            await api.post("/queues", { ...queueForm, peopleQty: Number(queueForm.peopleQty), cpfCustomer: queueForm.cpf, cpfEmployee: "11111111111" }, { headers: { Authorization: token } });
+
         }
         return navigate('/');
     }
@@ -51,12 +46,8 @@ const QueueForm: React.FC = () => {
                     <h2>Adicionar Fila</h2>
                     <div id="form">
                         <div>
-                            <label htmlFor="cpf" className="label"></label>
-                            <input type="text" className="input-container" name="cpf" maxLength={ 11 } placeholder="CPF Cliente" onChange={ ({ target: { name, value } }) => formHandler(name, value) }/>
-                        </div>
-                        <div>
-                            <label htmlFor="fullName" className="label"></label>
-                            <input type="text" className="input-container" name="fullName" placeholder="Nome Cliente" onChange={ ({ target: { name, value } }) => formHandler(name, value) }/>
+                            <label htmlFor="nickname" className="label"></label>
+                            <input type="text" className="input-container" name="nickname" placeholder="Nome Cliente" onChange={ ({ target: { name, value } }) => formHandler(name, value) }/>
                         </div>
                         <div>
                             <label htmlFor="peopleQty" className="label"></label>
