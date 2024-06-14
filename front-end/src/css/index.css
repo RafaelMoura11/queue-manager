@@ -14,28 +14,46 @@ main {
     position: relative;
 }
 
-section#principal {
+section#principal,
+aside#principal {
     position: absolute;
-    top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 250px;
     height: 500px;
 }
 
-img {
+section#principal {
+    top: 35%;
+}
+
+aside#principal {
+    left: 80%;
+    bottom: 20px;
+}
+
+img, #mascate {
     display: block;
     width: 270px;
+}
+
+img {
     padding-bottom: 40px;
 }
 
-section#principal > div#frame {
+section#principal > div#frame,
+aside#principal > div#frame {
     display: block;
     padding: 10px;
 }
 
-div#frame > h2 {
+div#frame > h2,
+#principal > h2 {
     text-align: center;
+    padding-bottom: 10px;
+}
+
+div#frame > h2 {
     margin-bottom: 10px;
 }
 
@@ -53,7 +71,7 @@ div#frame > h2 {
     border: 0px; 
     border-radius: 50px;
     font-size: 17px;
-    color: rgb(255 255 255);
+    color: rgb(255, 255, 255);
     cursor: pointer;
 }
 
@@ -79,11 +97,28 @@ span {
     position: absolute;
 }
 
-button {
+button, #buttons2 > button, div > button[type=submit] {
     background-color: #BA9A2F;
-    height: 30px;
-    width: 230px;
+    height: 40px;
     cursor: pointer;
+    color: white;
+    border: none;
+    border-radius: 30px;
+}
+
+button {
+    width: 230px;
+    height: 30px;
+}
+
+#buttons2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#buttons2 > button {
+    margin-left: 10px;
 }
 
 #btn-addfila {
@@ -94,26 +129,14 @@ input:focus {
     outline: none;
 }
 
-#mascate {
-    display: block;
-    width: 270px;
-}
-
-#principal > h2 {
-    text-align: center;
-    padding-bottom: 10px;
-}
-
 #head {
     display: flex;
+    justify-content: space-between;
+    width: 300px;
 }
 
 #head img {
     width: 40px;
-}
-
-#head > h4 {
-    margin-left: 60px;
 }
 
 ul {
@@ -122,9 +145,16 @@ ul {
     text-align: center;
 }
 
-.lista > ul {
+.lista {
     display: flex;
     justify-content: space-between;
+    padding: 15px;
+    width: 300px;
+}
+
+li {
+    margin-left: 50px;
+    list-style-type: none;
 }
 
 .btn-del {
@@ -133,20 +163,7 @@ ul {
     cursor: pointer;
 }
 
-#buttons2 > button {
-    display: block;
-    margin-left: 10px;
-    width: 90%;
-    height: 40px;
-    background-color: #BA9A2F;
-    color: white;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-}
-
-
-section#login{
+section#login {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -156,7 +173,7 @@ section#login{
     height: 550px;
 }
 
-section#login > div#imagem{
+section#login > div#imagem {
     display: block;
     background: url("../images/adcbf8153e6c732a22e6e85cd2b14d65bb9524ce.webp") no-repeat;
     background-size: cover;
@@ -168,55 +185,41 @@ section#login > div#formulario {
     padding: 30px;
 }
 
-div#formulario > h2{
-    color:#BA9A2F;
+div#formulario > h2 {
+    color: #BA9A2F;
     margin-bottom: 5px;
 }
 
-
-div#formulario > h3{
+div#formulario > h3 {
     color: rgba(0, 0, 0, 0.5);
     font-size: 15px;
-    padding-bottom: 20px ;
+    padding-bottom: 20px;
 }
 
-.input{
+.input {
     border: 0;
     outline: 0;
     border-bottom: 1px solid;
     border-color: #BA9A2F;
     width: 258px;
-    
 }
 
-.campo{
+.campo {
     font-size: 13px;
     padding-top: 15px;
 }
 
-.label{
+.label {
     color: rgba(0, 0, 0, 0.5);
 }
 
-#senha{
+#senha {
     font-size: 10px;
     position: relative;
-    padding: 15px 0 15px 0;
+    padding: 15px 0;
 }
 
-
-div > button[type=submit]{
-    display: block;
-    width: 90%;
-    height: 40px;
-    background-color: #BA9A2F;
-    color: white;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-}
-
-#send{
+#send {
     padding-top: 35px;
 }
 
@@ -224,11 +227,72 @@ div > button[type=submit]{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* 100% da altura da viewport */
+    height: 100vh;
     text-align: center;
-  }
+}
 
 .date-time {
     text-wrap: nowrap;
     margin-bottom: 20px;
+}
+
+section#sec {
+    display: flex;
+    position: relative;
+    top: 100px;
+}
+
+.slide {
+    display: flex;
+    position: relative;
+    top: 10%;
+    margin-left: 2%;
+    width: 900px;
+    height: 576px;
+    overflow: hidden;
+    border-radius: 15px;
+    transition: all 0.4s;
+}
+
+.slides {
+    width: 5120px;
+    display: flex;
+}
+
+.image img {
+    width: 1024px;
+    height: 576px;
+}
+
+#atual {
+    transition: all 2s;
+}
+
+#voltar {
+    top: 50%;
+    left: 10%;
+}
+
+#next {
+    top: 50%;
+    right: 10%;
+}
+
+.balls div {
+    transition: all 0.5s;
+    padding: 6px;
+    border-radius: 50%;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+#title {
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+    align-items: center;
+}
+
+#title > img {
+    width: 80px;
 }

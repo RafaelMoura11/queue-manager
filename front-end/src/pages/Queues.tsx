@@ -1,16 +1,12 @@
 import { useContext, useState, useEffect } from 'react';
-import mascatelogo from '../images/Captura de tela 2024-05-22 161444.png';
-import cadeiradobravel from '../images/cadeira-dobravel.png';
-import perto from '../images/perto.png';
 import api from '../api';
 import QueueInterface from '../interfaces/Queue';
-import ArrowBack from '../components/ArrowBack';
 import MyContext from "../context/MyContext";
-import { useNavigate } from "react-router-dom";
+import QueueWithLogin from '../components/QueueWithLogin';
+import QueueWithoutLogin from '../components/QueueWithoutLogin';
 
 
 const Queues: React.FC = () => {
-    const navigate = useNavigate();
     const { token } = useContext(MyContext);
     const [queues, setQueues] = useState<QueueInterface[]>([]);
     useEffect(() => {
@@ -28,39 +24,11 @@ const Queues: React.FC = () => {
     }
 
     return (
-        <main>
+        <>
             {
-                token && <ArrowBack />
+                token ? <QueueWithLogin queues={ queues } removeQueue={ removeQueue } /> : <QueueWithoutLogin queues={ queues } />
             }
-            <section id="principal">
-                <img id="mascate" src={ mascatelogo } alt="Mascate Logo" />
-                <h2>Fila</h2>
-                <div id="head">
-                    <img src={ cadeiradobravel } alt="Cadeira Dobravel" />
-                    <h4>Nome</h4>
-                </div>
-                {
-                    queues.map((queue) => (
-                        <div className="lista" key={ queue.idQueue }>
-                            <ul>
-                                <h4>{ queue.peopleQty }</h4>
-                                <li>{ queue.customer.fullName }</li>
-                                {
-                                    token && <img className="btn-del" src={ perto } alt="Delete Button" onClick={ () => removeQueue(queue) } />
-                                }
-                            </ul>
-                        </div>
-                    ))
-                }
-                <br />
-                {
-                    token &&
-                    (<div id="buttons2">
-                        <button onClick={ () => navigate("/queue-form") }>Adicionar mais clientes</button>
-                    </div>)
-                }
-            </section>
-        </main>
+        </>
     );
 };
 

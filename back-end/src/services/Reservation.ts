@@ -4,7 +4,7 @@ import ReservationInterface from '../interfaces/Reservation';
 export default class Reservation {
     static async getAll(): Promise<ReservationInterface[]> {
         const reservations: ReservationInterface[] = await ReservationModel.findAll({
-            attributes: ['idReservation', 'peopleQty', 'date', 'isActive', 'cpfEmployee'],
+            attributes: ['idReservation', 'nickname', 'phone', 'peopleQty', 'date', 'isActive', 'cpfEmployee'],
             where: {
                 isActive: true
             }

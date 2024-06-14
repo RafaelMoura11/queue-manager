@@ -63,16 +63,14 @@ const Reservations: React.FC = () => {
                     <h1 className="date-time">{date}</h1>
                     {groupedReservations[date].map((reservation) => (
                         <div className="lista" key={reservation.idReservation}>
-                            <ul>
-                                <h4>{reservation.peopleQty}</h4>
-                                <li>{reservation.customer.fullName}</li>
-                                <img
-                                    className="btn-del"
-                                    src={ perto }
-                                    alt="Delete Button"
-                                    onClick={() => deleteReservation(reservation)}
-                                />
-                            </ul>
+                            <h4>{reservation.peopleQty}</h4>
+                            <h4>{reservation.nickname}</h4>
+                            <img
+                                className="btn-del"
+                                src={ perto }
+                                alt="Delete Button"
+                                onClick={() => deleteReservation(reservation)}
+                            />
                         </div>
                     ))}
                 </div>
